@@ -1,0 +1,32 @@
+[
+    {
+        "name": "Motivational Seminars",
+        "url": "seminars",
+        "image": "https://mytelanganaus.org/img/top_offers/motivational.png"
+    },
+    {
+        "name": "Health Card",
+        "url": "health",
+        "image": "https://mytelanganaus.org/img/top_offers/medical-card.png"
+    },
+    {
+        "name": "school",
+        "url": "school",
+        "image": "https://mytelanganaus.org/img/top_offers/school.png"
+    },
+    {
+        "name": "scholarship",
+        "url": "scholarship",
+        "image": "https://mytelanganaus.org/img/top_offers/scholarship.png"
+    },
+    {
+        "name": "orphans",
+        "url": "orphans",
+        "image": "https://mytelanganaus.org/img/top_offers/orphan.png"
+    },
+    {
+        "name": "Health Campus",
+        "url": "campus",
+        "image": "https://mytelanganaus.org/img/top_offers/healthcare.png"
+    }
+]
