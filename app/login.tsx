@@ -3,7 +3,6 @@ import { View, StyleSheet } from 'react-native';
 import { useRouter } from 'expo-router';
 //const router = useRouter();
 // router.back()
-import ScrollScreen from '@/assets/reusable-components/scrollScreen';
 
 import LoginMember from '@/assets/reusable-components/LoginMember';
 import ScrollScreenBack from '@/assets/reusable-components/scrollScreenBack';
