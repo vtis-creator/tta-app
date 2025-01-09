@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { StyleSheet, Dimensions, ScrollView } from 'react-native';
+import { StyleSheet, Dimensions, ScrollView, View, Image } from 'react-native';
 import { HeaderTextUnderline } from '@/assets/reusable-components/headerText';
-import Donate from '@/assets/reusable-components/donateView';
 import { BodyText } from '@/assets/reusable-components/bodyText';
 import ScrollScreenBack from '@/assets/reusable-components/scrollScreenBack';
 
@@ -12,6 +11,11 @@ export default function presidentMessage() {
     <ScrollScreenBack>
       <HeaderTextUnderline>President's message</HeaderTextUnderline>
       <ScrollView>
+        <View>
+          <Image
+            source={{uri: 'https://mytelanganaus.org/storage/profile/vamshi_reddy_kancharakuntla_05202023_1684592755_thumb.png'}}
+            style={{width: 150, height: 150, marginLeft: '30%', marginTop: 10}}/>
+        </View>
         <BodyText style={{marginTop: 10, marginLeft: 15}}>Dear friends,</BodyText>
 
         <BodyText style={{marginLeft: 15}}>With great privilege and honor, I assume the role of President of the Telangana American Telugu Association for the next two years.</BodyText>
