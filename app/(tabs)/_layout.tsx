@@ -9,7 +9,7 @@ export default function TabLayout() {
   return (
       <Tabs
       screenOptions={{
-          tabBarActiveTintColor: 'white',
+          tabBarActiveTintColor: '#b03600',
           headerStyle: {
             shadowOffset: {width: 20, height: 20},
             shadowColor: 'white',
@@ -17,11 +17,6 @@ export default function TabLayout() {
             shadowRadius: 20,
           },
           headerShadowVisible: false,
-          headerTintColor: '#b03600',
-          tabBarStyle: {
-            backgroundColor: '#b03600',
-            
-          },
         }}
       >
         <Tabs.Screen
@@ -29,7 +24,7 @@ export default function TabLayout() {
           options={{
             title: 'Home',
             tabBarIcon: ({ color, focused }) => (
-              <Ionicons name={focused ? 'home-sharp' : 'home-outline'} color='white' size={24} />
+              <Ionicons name={focused ? 'home-sharp' : 'home-outline'} color='#b03600' size={24} />
             ),
           }}
         />
@@ -38,7 +33,7 @@ export default function TabLayout() {
           options={{
             title: 'Membership',
             tabBarIcon: ({ color, focused }) => (
-              <Ionicons name={focused ? 'card-sharp' : 'card-outline'} color='white' size={24}/>
+              <Ionicons name={focused ? 'card-sharp' : 'card-outline'} color='#b03600' size={24}/>
             ),
           }}
         />
@@ -48,7 +43,7 @@ export default function TabLayout() {
             title: 'Matrimony',
             href: 'https://matrimony.mytelanganaus.org/',
             tabBarIcon: ({ color, focused }) => (
-              <Ionicons name={focused ? 'people-circle' : 'people-outline'} color='white' size={24}/>
+              <Ionicons name={focused ? 'people-circle' : 'people-outline'} color='#b03600' size={24}/>
             ),
           }}
         />
@@ -58,7 +53,7 @@ export default function TabLayout() {
             title: 'Services',
             header: () => <AppHeader />,
             tabBarIcon: ({ color, focused }) => (
-              <Ionicons name={focused ? 'business-sharp' : 'business-outline'} color='white' size={24}/>
+              <Ionicons name={focused ? 'business-sharp' : 'business-outline'} color='#b03600' size={24}/>
             ),
           }}
         />
@@ -67,7 +62,7 @@ export default function TabLayout() {
           options={{
             title: 'Events',
             tabBarIcon: ({ color, focused }) => (
-              <Ionicons name={focused ? 'calendar-clear-sharp' : 'calendar-clear-outline'} color='white' size={24}/>
+              <Ionicons name={focused ? 'calendar-clear-sharp' : 'calendar-clear-outline'} color='#b03600' size={24}/>
             ),
           }}
         />
@@ -76,7 +71,7 @@ export default function TabLayout() {
           options={{
             title: 'Media',
             tabBarIcon: ({ color, focused }) => (
-              <Ionicons name={focused ? 'image-sharp' : 'image-outline'} color='white' size={24}/>
+              <Ionicons name={focused ? 'image-sharp' : 'image-outline'} color='#b03600' size={24}/>
             ),
           }}
         />

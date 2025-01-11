@@ -231,77 +231,142 @@ function SignUpMember () {
 )};
 
 const styles = StyleSheet.create({
-    container: {
-      marginTop: 20
-    },
-    inputText: {
-      backgroundColor: 'white',
-      width: '45%',
-      marginHorizontal: 10
-    },
-    childInputText: {
-      backgroundColor: 'white',
-      width: '55%',
-      marginHorizontal: 10
-    },
-    childInputDate: {
-      backgroundColor: 'white',
-      width: '35%',
-      marginHorizontal: 10
-    },
-    error: {
-      color: 'red'
-    },
-    inputContainer: {
-      flex:1,
-      padding: 5,
-      marginBottom: 10
-    },
-    text: {
-      color: '#fff',
-    },
-    image: {
-      width: '100%',
-      height: '100%',
-      resizeMode: 'repeat',
-    },
-    inputs: {
-      backgroundColor: '#fff',
-      borderRadius: 10,
-      padding: 10,
-      borderWidth: 1,
-      borderColor: 'grey'
-    },
-    shadowProp: {
-      shadowColor: 'black',
-      shadowOffset: {width: -2, height: 4},
-      shadowOpacity: 0.2,
-      shadowRadius: 3,
-    },
-    separator: {
-      marginVertical: 8,
-      width: '25%'
-    },
-    button: {
-      paddingHorizontal: 8,
-      paddingVertical: 6,
-      borderRadius: 4,
-      backgroundColor: 'grey',
-      marginHorizontal: '1%',
-      marginBottom: 15,
-      minWidth: '30%',
-      textAlign: 'center',
-    },
-    selected: {
-      color: '#b03600'
-    },
-    buttonLabel: {
-      width: '30%',
-      textAlign: 'center'
-    },
-    selectedLabel: {
-      color: 'white',
-    },
-  });
+  container: {
+    marginTop: 30,
+    paddingHorizontal: 15,
+    backgroundColor: 'white',
+  },
+  header: {
+    fontSize: 24,
+    fontWeight: '700',
+    color: '#333',
+    marginBottom: 20,
+  },
+  inputText: {
+    backgroundColor: 'white',
+    width: '48%',
+    marginVertical: 10,
+    paddingVertical: 12,
+    paddingHorizontal: 15,
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: '#ccc',
+    fontSize: 16,
+    color: '#333',
+  },
+  childInputText: {
+    backgroundColor: 'white',
+    width: '60%',
+    marginVertical: 10,
+    paddingVertical: 12,
+    paddingHorizontal: 15,
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: '#ccc',
+    fontSize: 16,
+    color: '#333',
+  },
+  childInputDate: {
+    backgroundColor: 'white',
+    width: '40%',
+    marginVertical: 10,
+    paddingVertical: 12,
+    paddingHorizontal: 15,
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: '#ccc',
+    fontSize: 16,
+    color: '#333',
+  },
+  selected: {
+    color: '#b03600',
+    fontWeight: '600',
+  },
+  inputContainer: {
+    marginVertical: 15,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+  },
+  sectionTitle: {
+    fontSize: 16,
+    fontWeight: '500',
+    color: '#555',
+    marginTop: 20,
+  },
+  sectionSubtitle: {
+    fontSize: 14,
+    fontWeight: '300',
+    color: '#888',
+    marginTop: 5,
+  },
+  button: {
+    marginTop: 30,
+    marginHorizontal: 10,
+    width: '100%',
+    backgroundColor: '#1b96de',
+    borderRadius: 8,
+    paddingVertical: 15,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  buttonLabel: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: 'white',
+  },
+  listIcon: {
+    marginLeft: 10,
+    transform: [{ scale: 0.7 }],
+  },
+  listItem: {
+    marginVertical: 5,
+    paddingVertical: 15,
+    paddingHorizontal: 10,
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: '#ddd',
+  },
+  listItemSelected: {
+    backgroundColor: '#f2f8ff',
+    borderColor: '#1b96de',
+  },
+  listItemText: {
+    fontSize: 16,
+    fontWeight: '500',
+    color: '#333',
+  },
+  listItemTextSelected: {
+    color: '#1b96de',
+    fontWeight: '600',
+  },
+  bodyText: {
+    fontSize: 14,
+    color: '#555',
+  },
+  bodyTextReadMore: {
+    fontSize: 14,
+    color: '#1b96de',
+    fontWeight: '500',
+  },
+  totalAmountContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 10,
+    paddingVertical: 5,
+    paddingHorizontal: 10,
+    borderTopWidth: 1,
+    borderTopColor: '#ddd',
+  },
+  totalAmountText: {
+    fontSize: 16,
+    color: '#333',
+  },
+  totalAmountValue: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: '#1b96de',
+  },
+});
 
 export default SignUpMember;
