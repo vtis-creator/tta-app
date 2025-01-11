@@ -1,135 +1,114 @@
-import * as React from 'react';
-import { View, StyleSheet, Dimensions, TouchableOpacity, ScrollView } from 'react-native';
+import React from 'react';
+import { View, StyleSheet, ScrollView, Text } from 'react-native';
 import { Button } from 'react-native-paper';
 import { Formik, Field } from 'formik';
-import CustomInput from '@/assets/reusable-components/customInput';
-import {SafeAreaView, SafeAreaProvider} from 'react-native-safe-area-context';
-
 import * as yup from 'yup';
-import { BodyText } from './bodyText';
-import { HeaderText } from './headerText';
-
-const ButtonLabels = ['Student', 'Life', 'Bronze', 'Silver', 'Gold', 'Platinum', 'Diamond'];
+import CustomInput from '@/assets/reusable-components/customInput';
 
 const loginValidationSchema = yup.object().shape({
   email: yup
     .string()
-    .email("Please enter valid email")
-    .required('Email Address is Required'),
-  password: yup
+    .email('Please enter a valid email')
+    .required('Email Address is required'),
+  phone: yup
     .string()
-    .min(8, ({ min }) => `Password must be at least ${min} characters`)
-    .required('Password is required'),
-})
+    .matches(/^\d{10}$/, 'Phone number must be 10 digits')
+    .required('Phone number is required'),
+});
 
-function SearchMember () {
+const SearchMember = () => {
   return (
-    <View style={{marginBottom: 10, backgroundColor: 'white'}}>
+    <ScrollView style={styles.container}>
       <Formik
-          validationSchema={loginValidationSchema}
-          initialValues={{
-              fName: '',
-              lName: '',
-              email:'',
-              phone:''
-          }}
-          onSubmit={values => console.log(values)}
-      >
-      {({
-          handleSubmit, isValid
-      }) => (
-        <View>
-          <Field
-            component={CustomInput}
-            name="fName"
-            placeholder="First Name"
-          />
-          <Field
-            component={CustomInput}
-            name="lName"
-            placeholder="Last Name"
-          />
-          <Field
-            component={CustomInput}
-            name="email"
-            placeholder="Email"
-          />
-          <Field
-            component={CustomInput}
-            name="phone"
-            placeholder="Phone Number"
-          />
+        validationSchema={loginValidationSchema}
+        initialValues={{
+          fName: '',
+          lName: '',
+          email: '',
+          phone: '',
+        }}
+        onSubmit={(values) => console.log(values)}>
+        {({ handleSubmit, isValid }) => (
+          <View style={styles.formContainer}>
+            <Field
+              component={CustomInput}
+              name="fName"
+              placeholder="First Name"
+              style={styles.input}
+            />
+            <Field
+              component={CustomInput}
+              name="lName"
+              placeholder="Last Name"
+              style={styles.input}
+            />
+            <Field
+              component={CustomInput}
+              name="email"
+              placeholder="Email"
+              keyboardType="email-address"
+              style={styles.input}
+            />
+            <Field
+              component={CustomInput}
+              name="phone"
+              placeholder="Phone Number"
+              keyboardType="numeric"
+              style={styles.input}
+            />
 
-          <Button
-            onPress={() =>handleSubmit}
-            disabled={!isValid}
-          >
-          Search
-          </Button>
-        </View>
-      )}
+            <Button
+              mode="contained"
+              onPress={handleSubmit}
+              disabled={!isValid}
+              style={styles.submitButton}
+              labelStyle={styles.submitButtonText}>
+              Search
+            </Button>
+          </View>
+        )}
       </Formik>
-    </View>
-)};
+    </ScrollView>
+  );
+};
 
 const styles = StyleSheet.create({
-    container: {
-      marginTop: 30
-    },
-    error: {
-      color: 'red'
-    },
-    inputContainer: {
-      flex:1,
-      padding: 5,
-      marginBottom: 10
-    },
-    text: {
-      color: '#fff',
-    },
-    image: {
-      width: '100%',
-      height: '100%',
-      resizeMode: 'repeat',
-    },
-    inputs: {
-      backgroundColor: '#fff',
-      borderRadius: 10,
-      padding: 10,
-      borderWidth: 1,
-      borderColor: 'grey'
-    },
-    shadowProp: {
-      shadowColor: 'black',
-      shadowOffset: {width: -2, height: 4},
-      shadowOpacity: 0.2,
-      shadowRadius: 3,
-    },
-    separator: {
-      marginVertical: 8,
-      width: '25%'
-    },
-    button: {
-      paddingHorizontal: 8,
-      paddingVertical: 6,
-      borderRadius: 4,
-      backgroundColor: 'oldlace',
-      alignSelf: 'flex-start',
-      marginHorizontal: '1%',
-      marginBottom: 15,
-      minWidth: '48%',
-      textAlign: 'center',
-    },
-    selected: {
-      color: 'white',
-      borderWidth: 0,
-    },
-    buttonLabel: {
-      textAlign: 'center'
-    },
-    selectedLabel: {
-      color: 'white',
-    },
-  });
+  container: {
+    flex: 1,
+    backgroundColor: 'white',
+    padding: 20,
+  },
+  header: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#333',
+    textAlign: 'center',
+    marginVertical: 20,
+  },
+  formContainer: {
+    marginTop: 10,
+  },
+  input: {
+    backgroundColor: '#f9f9f9',
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: '#ddd',
+    padding: 12,
+    marginBottom: 15,
+    fontSize: 16,
+    color: '#333',
+  },
+  submitButton: {
+    marginTop: 20,
+    paddingVertical: 12,
+    borderRadius: 8,
+    backgroundColor: '#800000',
+  },
+  submitButtonText: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: 'white',
+  },
+});
 
 export default SearchMember;

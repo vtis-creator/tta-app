@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { View, StyleSheet, ScrollView } from 'react-native';
+import React from 'react';
+import { View, StyleSheet, ScrollView, Text } from 'react-native';
 import { Button, List, useTheme } from 'react-native-paper';
 import { Formik, Field } from 'formik';
 import { useSelector } from 'react-redux';
@@ -7,22 +7,8 @@ import _ from 'lodash';
 
 import CustomInput from '@/assets/reusable-components/customInput';
 
-import { BodyText, BodyTextReadMore } from './bodyText';
-import { HeaderText } from './headerText';
-
-// const loginValidationSchema = yup.object().shape({
-//   email: yup
-//     .string()
-//     .email("Please enter valid email")
-//     .required('Email Address is Required'),
-//   password: yup
-//     .string()
-//     .min(8, ({ min }) => `Password must be at least ${min} characters`)
-//     .required('Password is required'),
-// })
-
 const Options = [
-  { label: 'Student', price: 25, color: '#1b96de' },
+  { label: 'Student', price: 25, color: '#800000' },
   { label: 'Life', price: 50, color: 'green' },
   { label: 'Bronze', price: 500, color: '#cd7f32' },
   { label: 'Silver', price: 1250, color: 'silver' },
@@ -31,341 +17,234 @@ const Options = [
   { label: 'Diamond', price: 12500, color: '#b9f2ff' },
 ];
 
-const findIndex = (sub) => {
-  const index = _.findIndex(Options, {label: sub})
-  return index;
-}
+const findIndex = (sub) => _.findIndex(Options, { label: sub });
 
-function SignUpMember () {
+const SignUpMember = () => {
   const loginInfo = useSelector((state) => state.login.loginDetails);
-  const {
-    subscription,
-    firstName,
-    lastName,
-    email,
-    phone,
-    country,
-    state,
-    city,
-    zip,
-    reffered,
-    sFirstName,
-    sLastName,
-    cFullName,
-    cDOB
-  } = loginInfo;
   const { colors } = useTheme();
-  const [membership, setMembership] = React.useState(subscription !== '' ? subscription : 'Student');
-  const [membershipPrice, setMembershipPrice] = React.useState(subscription !== '' ? findIndex(subscription): 0);
+  const [membership, setMembership] = React.useState(loginInfo.subscription || 'Student');
+  const [membershipPrice, setMembershipPrice] = React.useState(findIndex(membership) || 0);
   const [expanded, setExpanded] = React.useState(false);
 
   const handlePress = (value, index) => {
-    setExpanded(!expanded);
+    setExpanded(false);
     setMembership(value);
     setMembershipPrice(index);
-  }
+  };
 
   return (
-    <ScrollView style={{backgroundColor: 'white'}}>
-      <HeaderText style={{marginTop: 20, marginBottom: 20}}>Let's Create Your Membership</HeaderText>
+    <ScrollView style={styles.scrollView}>
+      <Text style={styles.header}>Create Your Membership</Text>
       <List.Accordion
         title={membership}
-        left={props => <List.Icon {...props} icon="card-account-details" color={colors.primary} style={{marginLeft: 10}}/>}
+        left={(props) => <List.Icon {...props} icon="card-account-details" color={colors.primary} />}
         expanded={expanded}
         onPress={() => setExpanded(!expanded)}
-        style={{backgroundColor: 'white'}}>
-          {Options.map((value, i) => {
-            return (
-              <List.Item
-                key={i}
-                title={value.label + ' - ' + value.price}
-                onPress={() => handlePress(value.label, i)}
-                titleStyle={[membership === value.label && styles.selected]}
-                left={props => <List.Icon {...props} icon="checkbox-blank-circle" color={value.color} style={{marginLeft: 10, transform: [{scale: .7}]}}/>}
+        style={styles.accordion}>
+        {Options.map((option, i) => (
+          <List.Item
+            key={i}
+            title={`${option.label} - $${option.price}`}
+            onPress={() => handlePress(option.label, i)}
+            titleStyle={[
+              styles.listItemText,
+              membership === option.label && styles.listItemTextSelected,
+            ]}
+            left={(props) => (
+              <List.Icon
+                {...props}
+                icon="checkbox-blank-circle"
+                color={option.color}
+                style={styles.listIcon}
               />
-            )
-          })}
+            )}
+            style={[
+              styles.listItem,
+              membership === option.label && styles.listItemSelected,
+            ]}
+          />
+        ))}
       </List.Accordion>
-      
-      <View style={[styles.container]}>
-          <Formik
-              initialValues={{
-                  firstName: firstName,
-                  lastName: lastName,
-                  email: email,
-                  phoneNumber: phone,
-                  country: country,
-                  state: state,
-                  city:city,
-                  zip: zip,
-                  reffered: reffered,
-                  sFirstName: sFirstName,
-                  sLastName: sLastName,
-                  cFullName: cFullName,
-                  cDOB: cDOB,
-                  charity: 0
-              }}
-              onSubmit={values => console.log(values)}
-          >
-          {({
-              handleSubmit, isValid
-          }) => (
-            <View style={{flexDirection: 'row', flexWrap: 'wrap'}}>
-              <Field
-                component={CustomInput}
-                name="firstName"
-                label="First Name"
-                required
-                style={styles.inputText}
-              />
-              <Field
-                component={CustomInput}
-                name="lastName"
-                label="Last Name"
-                style={styles.inputText}
-              />
-              <Field
-                component={CustomInput}
-                name="email"
-                label="Email"
-                style={styles.inputText}
-              />
-              <Field
+
+      <Formik
+        initialValues={{
+          firstName: loginInfo.firstName || '',
+          lastName: loginInfo.lastName || '',
+          email: loginInfo.email || '',
+          phoneNumber: loginInfo.phone || '',
+          city: loginInfo.city || '',
+          state: loginInfo.state || '',
+          zip: loginInfo.zip || '',
+          referred: loginInfo.referred || '',
+          charity: 0,
+        }}
+        onSubmit={(values) => console.log('Form Submitted', values)}>
+        {({ handleSubmit, isValid }) => (
+          <View style={styles.formContainer}>
+            <Field
+              component={CustomInput}
+              name="firstName"
+              placeholder="First Name"
+              style={styles.input}
+            />
+            <Field
+              component={CustomInput}
+              name="lastName"
+              placeholder="Last Name"
+              style={styles.input}
+            />
+            <Field
+              component={CustomInput}
+              name="email"
+              placeholder="Email"
+              keyboardType="email-address"
+              style={styles.input}
+            />
+            <Field
               component={CustomInput}
               name="phoneNumber"
-              label="Phone Number"
-              placeholder="1234567890"
+              placeholder="Phone Number"
               keyboardType="numeric"
-              style={styles.inputText}
-              />
-              <Field
+              style={styles.input}
+            />
+            <Field
               component={CustomInput}
               name="city"
               placeholder="City"
-              style={styles.inputText}
-              />
-              <Field
-                component={CustomInput}
-                name="state"
-                placeholder="State"
-                style={styles.inputText}
-              />
-              <Field
-                component={CustomInput}
-                name="zip"
-                placeholder="Zip"
-                style={styles.inputText}
-              />
-              <Field
-                component={CustomInput}
-                name="reffered"
-                placeholder="Reffered By"
-                style={styles.inputText}
-              />
+              style={styles.input}
+            />
+            <Field
+              component={CustomInput}
+              name="state"
+              placeholder="State"
+              style={styles.input}
+            />
+            <Field
+              component={CustomInput}
+              name="zip"
+              placeholder="ZIP Code"
+              keyboardType="numeric"
+              style={styles.input}
+            />
+            <Field
+              component={CustomInput}
+              name="referred"
+              placeholder="Referred By"
+              style={styles.input}
+            />
 
-              <BodyTextReadMore style={{marginTop: 20, marginLeft: 5, width: '100%'}}>Family Details</BodyTextReadMore>
-              <Field
-                component={CustomInput}
-                name="sFirstName"
-                label="Spouse First Name"
-                required
-                style={styles.inputText}
-              />
-              <Field
-                component={CustomInput}
-                name="sLastName"
-                label="Spouse Last Name"
-                style={styles.inputText}
-              />
-
-              <BodyTextReadMore style={{marginTop: 20, marginLeft: 5, width: '100%'}}>Children Details</BodyTextReadMore>
-              <Field
-                component={CustomInput}
-                name="cFullName"
-                label="Child's Full Name"
-                required
-                style={styles.childInputText}
-              />
-              <Field
-                component={CustomInput}
-                name="cDOB"
-                label="DOB"
-                style={styles.childInputDate}
-              />
-              <View style={{width: '50%', marginTop: 20, flexDirection: 'row', flexWrap: 'wrap'}}>
-                <BodyText style={{width: '65%', alignSelf: 'flex-start'}}>Subscription Plan:</BodyText>
-                <BodyTextReadMore style={{width: '35%', alignSelf: 'flex-end'}}>{membership !== 'Select Membership' ? membership : 'Student'}</BodyTextReadMore>
-              </View>
-              <View style={{width: '50%', marginTop: 20, flexDirection: 'row', flexWrap: 'wrap'}}>
-                <BodyText style={{width: '65%', alignSelf: 'flex-start'}}>Membership Amount:</BodyText>
-                <BodyTextReadMore style={{width: '35%', alignSelf: 'flex-end'}}>{Options[membershipPrice].price}</BodyTextReadMore>
-              </View>
-              <View style={{width: '50%', marginTop: 20, flexDirection: 'row', flexWrap: 'wrap'}}>
-                <BodyText style={{width: '65%', alignSelf: 'flex-start'}}>Charitable Activies:</BodyText>
-                <BodyTextReadMore style={{width: '35%', alignSelf: 'flex-end'}}>
-                  <Field
-                    component={CustomInput}
-                    name="charity"
-                    placeholder="50"
-                  />
-                </BodyTextReadMore>
-              </View>
-              <View style={{width: '50%', marginTop: 20, flexDirection: 'row', flexWrap: 'wrap'}}>
-                <BodyText style={{width: '65%', alignSelf: 'flex-start'}}>total:</BodyText>
-                <BodyTextReadMore style={{width: '35%', alignSelf: 'flex-end'}}>{Options[membershipPrice].price + 25}</BodyTextReadMore>
-              </View>
-
-              <Button
-              onPress={() =>handleSubmit}
-              disabled={!isValid}
-              mode='contained'
-              style={{marginTop: 20, marginLeft: 10, width: '95%', borderColor: colors.primary}}
-              >
-              Save & Proceed to Payment
-              </Button>
+            <Text style={styles.sectionTitle}>Subscription Summary</Text>
+            <View style={styles.summaryRow}>
+              <Text style={styles.summaryLabel}>Membership Plan:</Text>
+              <Text style={styles.summaryValue}>{membership}</Text>
             </View>
-          )}
-          </Formik>
-      </View>
+            <View style={styles.summaryRow}>
+              <Text style={styles.summaryLabel}>Membership Amount:</Text>
+              <Text style={styles.summaryValue}>${Options[membershipPrice].price}</Text>
+            </View>
+            <View style={styles.summaryRow}>
+              <Text style={styles.summaryLabel}>Total:</Text>
+              <Text style={styles.summaryValue}>
+                ${Options[membershipPrice].price + 25}
+              </Text>
+            </View>
+
+            <Button
+              mode="contained"
+              onPress={handleSubmit}
+              disabled={!isValid}
+              style={styles.submitButton}
+              labelStyle={styles.submitButtonText}>
+              Save & Proceed to Payment
+            </Button>
+          </View>
+        )}
+      </Formik>
     </ScrollView>
-)};
+  );
+};
 
 const styles = StyleSheet.create({
-  container: {
-    marginTop: 30,
-    paddingHorizontal: 15,
+  scrollView: {
     backgroundColor: 'white',
+    padding: 15,
   },
   header: {
     fontSize: 24,
-    fontWeight: '700',
+    fontWeight: 'bold',
     color: '#333',
-    marginBottom: 20,
+    textAlign: 'center',
+    marginVertical: 20,
   },
-  inputText: {
-    backgroundColor: 'white',
-    width: '48%',
-    marginVertical: 10,
-    paddingVertical: 12,
-    paddingHorizontal: 15,
+  accordion: {
+    backgroundColor: '#f9f9f9',
     borderRadius: 8,
-    borderWidth: 1,
-    borderColor: '#ccc',
-    fontSize: 16,
-    color: '#333',
-  },
-  childInputText: {
-    backgroundColor: 'white',
-    width: '60%',
-    marginVertical: 10,
-    paddingVertical: 12,
-    paddingHorizontal: 15,
-    borderRadius: 8,
-    borderWidth: 1,
-    borderColor: '#ccc',
-    fontSize: 16,
-    color: '#333',
-  },
-  childInputDate: {
-    backgroundColor: 'white',
-    width: '40%',
-    marginVertical: 10,
-    paddingVertical: 12,
-    paddingHorizontal: 15,
-    borderRadius: 8,
-    borderWidth: 1,
-    borderColor: '#ccc',
-    fontSize: 16,
-    color: '#333',
-  },
-  selected: {
-    color: '#b03600',
-    fontWeight: '600',
-  },
-  inputContainer: {
-    marginVertical: 15,
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'space-between',
-  },
-  sectionTitle: {
-    fontSize: 16,
-    fontWeight: '500',
-    color: '#555',
-    marginTop: 20,
-  },
-  sectionSubtitle: {
-    fontSize: 14,
-    fontWeight: '300',
-    color: '#888',
-    marginTop: 5,
-  },
-  button: {
-    marginTop: 30,
-    marginHorizontal: 10,
-    width: '100%',
-    backgroundColor: '#1b96de',
-    borderRadius: 8,
-    paddingVertical: 15,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  buttonLabel: {
-    fontSize: 16,
-    fontWeight: '600',
-    color: 'white',
-  },
-  listIcon: {
-    marginLeft: 10,
-    transform: [{ scale: 0.7 }],
+    marginBottom: 15,
+    elevation: 2,
   },
   listItem: {
+    backgroundColor: 'white',
     marginVertical: 5,
-    paddingVertical: 15,
-    paddingHorizontal: 10,
     borderRadius: 8,
-    borderWidth: 1,
-    borderColor: '#ddd',
+    padding: 10,
   },
   listItemSelected: {
-    backgroundColor: '#f2f8ff',
-    borderColor: '#1b96de',
+    backgroundColor: '#e6f7ff',
   },
   listItemText: {
     fontSize: 16,
-    fontWeight: '500',
     color: '#333',
   },
   listItemTextSelected: {
-    color: '#1b96de',
-    fontWeight: '600',
+    color: '#800000',
+    fontWeight: 'bold',
   },
-  bodyText: {
-    fontSize: 14,
-    color: '#555',
+  listIcon: {
+    transform: [{ scale: 0.8 }],
   },
-  bodyTextReadMore: {
-    fontSize: 14,
-    color: '#1b96de',
-    fontWeight: '500',
+  formContainer: {
+    marginTop: 20,
   },
-  totalAmountContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginTop: 10,
-    paddingVertical: 5,
-    paddingHorizontal: 10,
-    borderTopWidth: 1,
-    borderTopColor: '#ddd',
-  },
-  totalAmountText: {
+  input: {
+    backgroundColor: '#f9f9f9',
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: '#ddd',
+    padding: 12,
+    marginBottom: 15,
     fontSize: 16,
     color: '#333',
   },
-  totalAmountValue: {
+  sectionTitle: {
+    fontSize: 18,
+    fontWeight: '600',
+    color: '#333',
+    marginVertical: 15,
+  },
+  summaryRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingVertical: 5,
+  },
+  summaryLabel: {
+    fontSize: 16,
+    color: '#555',
+  },
+  summaryValue: {
     fontSize: 16,
     fontWeight: '600',
-    color: '#1b96de',
+    color: '#800000',
+  },
+  submitButton: {
+    marginTop: 20,
+    paddingVertical: 12,
+    borderRadius: 8,
+    backgroundColor: '#800000',
+  },
+  submitButtonText: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: 'white',
   },
 });
 

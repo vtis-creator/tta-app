@@ -12,7 +12,7 @@ export default function Membership() {
 
   return (
     <ScrollScreenBack style={styles.container}>
-      <HeaderTextUnderline style={styles.headerText}>Welcome Back!</HeaderTextUnderline>
+      <HeaderTextUnderline style={styles.headerText}>Welcome!</HeaderTextUnderline>
       <BodyText style={styles.bodyText}>Log in to TTA Portal</BodyText>
       <LoginMember />
 

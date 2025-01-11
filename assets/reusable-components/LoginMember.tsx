@@ -1,98 +1,113 @@
-import * as React from 'react';
-import { View, StyleSheet } from 'react-native';
+import React from 'react';
+import { View, StyleSheet, Text } from 'react-native';
 import { Button } from 'react-native-paper';
 import { Formik, Field } from 'formik';
 import { useRouter } from 'expo-router';
 import { useDispatch } from 'react-redux';
-
 import CustomInput from '@/assets/reusable-components/customInput';
 import { setLoginInfo } from '../reducers/loginSlice';
-
 import * as yup from 'yup';
 
-// const loginValidationSchema = yup.object().shape({
-//   email: yup
-//     .string()
-//     .email("Please enter valid email")
-//     .required('Email Address is Required'),
-//   password: yup
-//     .string()
-//     .min(8, ({ min }) => `Password must be at least ${min} characters`)
-//     .required('Password is required'),
-// })
+// Validation Schema
+const loginValidationSchema = yup.object().shape({
+  username: yup
+    .string()
+    .required('Username is required'),
+  password: yup
+    .string()
+    .min(8, 'Password must be at least 8 characters')
+    .required('Password is required'),
+});
 
-function LoginMember () {
+function LoginMember() {
   const router = useRouter();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const login = () => {
-    console.log('hit')
-    dispatch(setLoginInfo())
+    dispatch(setLoginInfo());
     router.push('/');
-  }
-  return (
-    <View style={{marginBottom: 10}}>
-      <Formik
-          initialValues={{
-              username: '',
-              password: '',
-          }}
-          onSubmit={(values) => login()}
-      >
-      {({
-          handleSubmit
-      }) => (
-        <View>
-          <Field
-            component={CustomInput}
-            name="username"
-            placeholder="Username"
-          />
-          <Field
-            component={CustomInput}
-            name="password"
-            placeholder="Password"
-            secureTextEntry
-          />
+  };
 
-          <Button
-            onPress={handleSubmit}
-          >
-          Sign In
-          </Button>
-        </View>
-      )}
+  return (
+    <View >
+      <Formik
+        initialValues={{
+          username: '',
+          password: '',
+        }}
+        validationSchema={loginValidationSchema}
+        onSubmit={login}
+      >
+        {({ handleSubmit, errors, touched, isValid }) => (
+          <View style={styles.formContainer}>
+            {/* Username Field */}
+            <Field
+              component={CustomInput}
+              name="username"
+              placeholder="Username"
+              style={styles.input}
+            />
+            {errors.username && touched.username && (
+              <Text style={styles.errorText}>{errors.username}</Text>
+            )}
+
+            {/* Password Field */}
+            <Field
+              component={CustomInput}
+              name="password"
+              placeholder="Password"
+              secureTextEntry
+              style={styles.input}
+            />
+            {errors.password && touched.password && (
+              <Text style={styles.errorText}>{errors.password}</Text>
+            )}
+
+            {/* Sign In Button */}
+            <Button
+              mode="contained"
+              onPress={handleSubmit}
+              disabled={!isValid}
+              style={styles.button}
+            >
+              Sign In
+            </Button>
+          </View>
+        )}
       </Formik>
     </View>
-)};
+  );
+}
 
 const styles = StyleSheet.create({
-    container: {
-      marginTop: 30
-    },
-    error: {
-      color: 'red'
-    },
-    inputContainer: {
-      flex:1,
-      padding: 5,
-      marginBottom: 10
-    },
-    text: {
-      color: '#fff',
-    },
-    image: {
-      width: '100%',
-      height: '100%',
-      resizeMode: 'repeat',
-    },
-    inputs: {
-      backgroundColor: '#fff',
-      borderRadius: 10,
-      padding: 10,
-      borderWidth: 1,
-      borderColor: 'grey'
-    },
-  });
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    paddingHorizontal: 20,
+    backgroundColor: '#F7F7F7',
+  },
+  formContainer: {
+    marginTop: 5,
+  },
+  input: {
+    backgroundColor: '#fff',
+    borderRadius: 8,
+    paddingVertical: 12,
+    paddingHorizontal: 15,
+    marginBottom: 15,
+    borderColor: '#D1D5DB',
+    borderWidth: 1,
+  },
+  button: {
+    marginTop: 20,
+    paddingVertical: 12,
+    backgroundColor: '#800000',
+  },
+  errorText: {
+    color: 'red',
+    fontSize: 12,
+    marginBottom: 5,
+  },
+});
 
 export default LoginMember;
