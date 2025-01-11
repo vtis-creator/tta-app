@@ -11,7 +11,7 @@ export default function HealthCard () {
   const router = useRouter();
   return (
     <ScrollScreenBack>
-          <HeaderTextUnderline>Orphans</HeaderTextUnderline>
+          <HeaderTextUnderline>Health Card</HeaderTextUnderline>
           <ScrollView>
             <View>
               <Image
