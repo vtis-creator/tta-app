@@ -10,6 +10,7 @@ import eventData from '@/assets/data/events.json';
 import { ModalDisplayEvent } from '@/assets/reusable-components/modalDisplay';
 import _ from 'lodash';
 import moment from 'moment';
+import { useSelector } from 'react-redux';
 
 const formatDate = (date) => {
   return moment(date).format('YYYY-MM-DD HH:MM')
@@ -25,6 +26,7 @@ export default function EventScreen () {
   const [iEvent, setIndexEvent] = React.useState(1000);
   const [filter, setFilter] = React.useState('All');
   const [events, setEvents] = React.useState(eventData);
+  const city = useSelector((state) => state.city.value)
 
   React.useEffect(() => {
     if(iEvent !== 1000) {
@@ -32,14 +34,16 @@ export default function EventScreen () {
     }
 
     if(filter === 'Upcoming') {
-      setEvents(eventData.filter((event) => moment(formatDate(event.event.start_date)).isSameOrAfter(moment(today))));
+      const dateFilter = eventData.filter((event) => moment(formatDate(event.event.start_date)).isSameOrAfter(moment(today)))
+      setEvents(dateFilter.filter((event) => event.location === city));
     }  else if(filter === 'Past') {
-      setEvents(eventData.filter((event) => moment(formatDate(event.event.start_date)).isSameOrBefore(moment(today))));
+      const dateFilter = eventData.filter((event) => moment(formatDate(event.event.start_date)).isSameOrBefore(moment(today)))
+      setEvents(dateFilter.filter((event) => event.location === city));
     } else {
-      setEvents(eventData)
+      setEvents(eventData.filter((event) => event.location === city));
     }
 
-  }, [iEvent, filter]);
+  }, [iEvent, filter, city]);
 
   const hideModal = () => {
     setIndexEvent(1000);
@@ -50,24 +54,23 @@ export default function EventScreen () {
     <ScrollScreen>
       <Portal>
       <Modal visible={visible} onDismiss={hideModal} contentContainerStyle={styles.containerStyle}>
-        <ModalDisplayEvent data={events[iEvent]} />
-          <TouchableOpacity
+      <TouchableOpacity
             onPress={() => hideModal()}
-            style={{position: 'absolute', top: 10, left: 20, justifyContent: 'center'}}
+            style={{marginTop: 40, marginLeft: 30}}
           >
             <Icon
               source="keyboard-backspace"
               color={colors.outline}
-              size={30}
+              size={50}
             />
           </TouchableOpacity>
+        <ModalDisplayEvent data={events[iEvent]} />
         </Modal>
       </Portal>
         <HeaderText style={{marginTop: 10, marginBottom: 10}}>Events</HeaderText>
         <View>
           <View style={{flexDirection: 'row', flexWrap: 'wrap'}}>
             {ButtonLabels.map(value => {
-              console.log(value, filter)
               return (
               <TouchableOpacity
                 key={value}
@@ -87,7 +90,7 @@ export default function EventScreen () {
                       <TouchableOpacity onPress={() => setIndexEvent(i)} key={i}>
                       <View style={{position: 'relative'}}>
                         <BodyText>{_.get(event, 'event.name', '')}</BodyText>
-                        <BodyTextReadMore style={{marginTop: -30}}>{_.get(event, 'event.start_date', '')}</BodyTextReadMore>
+                        <BodyTextReadMore>{_.get(event, 'event.start_date', '')}</BodyTextReadMore>
                       </View>
                 </TouchableOpacity>
                     </View>
@@ -101,13 +104,10 @@ export default function EventScreen () {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 15
-  },
   containerStyle: {
-    width: '100%',
-    height: '100%'
+    padding: 0,
+    margin: 0,
+    backgroundColor: 'white'
   },
   button: {
     paddingHorizontal: 8,

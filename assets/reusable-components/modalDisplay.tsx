@@ -1,7 +1,7 @@
 import * as React from 'react';
 import _ from 'lodash';
 import { Text, View, StyleSheet, Image, ScrollView } from "react-native";
-import { BodyText, BodyTextCard, BodyTextCardWithHilight } from '@/assets/reusable-components/bodyText';
+import { BodyText, BodyTextCard, BodyTextCardWithHilight, BodyTextReadMore } from '@/assets/reusable-components/bodyText';
 import { HeaderText, HeaderTextModal } from './headerText';
 
 export const ModalDisplayEvent = (props) => {
@@ -9,17 +9,12 @@ export const ModalDisplayEvent = (props) => {
   return (
     <View style={styles.modalContainer}>
         <ScrollView>
-            <HeaderTextModal style={{marginBottom: 20, marginTop: 25, fontSize: 30, fontWeight: 600}}>{_.get(inData, 'event.name', '')}</HeaderTextModal>
-            <Image source={{uri:_.get(inData,'image','')}} style={{ margin: 5, width:'98%', height: 250, overflow: 'hidden'}}/>
-            <BodyTextCardWithHilight cat={"Category"} text={_.get(inData, 'cat', '')} />
-            <BodyTextCardWithHilight cat={"Event Type"} text={_.get(inData, 'event.event_type', '')} />
-            <BodyTextCardWithHilight cat="Contact Email" text={_.get(inData, 'event.contact_email', '')} />
-            <BodyTextCardWithHilight cat="Event For" text={_.get(inData, 'event.chambers', '')} />
-            <BodyTextCardWithHilight cat="Speaker" text={_.get(inData, 'event.speakers', '')} />
-            <BodyTextCardWithHilight cat="Start Date" text={_.get(inData, 'event.start_date', '')} />
-            <BodyTextCardWithHilight cat="End Date" text={_.get(inData, 'event.end_date', '')} />
-            <BodyTextCardWithHilight cat="Description" text={_.get(inData, 'event.description', '')} />
-            <BodyTextCard cat="Link" text={_.get(inData, 'event.link', '')} />
+          <HeaderTextModal style={{marginBottom: 20, marginTop: 25, fontSize: 30, fontWeight: 600}}>{_.get(inData, 'event.name', '')}</HeaderTextModal>
+          <Image source={require('@/assets/images/events/cricket.jpg')} style={{ margin: 5, width:250, height: 250, marginLeft: '21%', overflow: 'hidden'}}/>
+          <BodyText style={{marginVertical: 10}}>{_.get(inData, 'location', '')}</BodyText>
+          <BodyTextReadMore style={{marginVertical: 10}}>{_.get(inData, 'event.start_date', '')}</BodyTextReadMore>
+          <BodyText style={{marginVertical: 10}}>{_.get(inData, 'event.description', '')}</BodyText>
+          <BodyText style={{marginVertical: 10}}>{_.get(inData, 'event.speaker', '')}</BodyText>
         </ScrollView>
     </View>
 )};
@@ -53,7 +48,8 @@ export const ModalDisplayService = (props) => {
 const styles = StyleSheet.create({
   modalContainer: {
     backgroundColor: 'white',
-    padding: 20
+    padding: 20,
+    height: '91%'
   },
   heading: {
     fontSize: 30,

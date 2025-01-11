@@ -3,7 +3,9 @@ import {View, StyleSheet, Dimensions, Image, TouchableOpacity } from 'react-nati
 import { Icon, useTheme, withTheme } from 'react-native-paper';
 import { useNavigation, Link, useRouter } from 'expo-router';
 import { Dropdown } from 'react-native-paper-dropdown';
-
+import { useSelector, useDispatch } from 'react-redux';
+import { selectCity, set } from '@/assets/reducers/citySlice';
+ 
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 
@@ -17,15 +19,12 @@ function AppHeader (props) {
   const navigation = useNavigation();
   const router = useRouter();
   const { colors } = useTheme();
-  const [city, setCity] = React.useState(colors.location);
+  const city = useSelector((state) => state.city.value)
+  const dispatch = useDispatch()
 
   React.useEffect(() => {
     navigation.setOptions({ headerShown: false });
-    console.log('app header', colors.location, city)
-    if(colors.location !== city) {
-      colors.location = city;
-    }
-  }, [navigation, city]);
+  }, [navigation]);
   // use global value to autoset the dropdown acrross the pages
 
   return (
@@ -40,7 +39,7 @@ function AppHeader (props) {
             placeholder="Select City"
             options={OPTIONS}
             value={city}
-            onSelect={setCity}
+            onSelect={(e) => dispatch(set(e))}
             menuContentStyle={{backgroundColor: 'white'}}
           />
         </View>

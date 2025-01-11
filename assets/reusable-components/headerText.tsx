@@ -32,6 +32,7 @@ const styles = StyleSheet.create({
     marginLeft: 10
   },
   quickSandBold: {
-    fontFamily: 'Roboto-Black'
+    fontFamily: 'Roboto-Black',
+    marginBottom: 10
   }
 });

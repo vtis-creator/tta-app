@@ -18,7 +18,10 @@ export default function Membership() {
       <HeaderTextUnderline>Welcome Back!</HeaderTextUnderline>
       <BodyText>Log in to TTA Portal</BodyText>
       <LoginMember />
-      <BodyText>Do not have a membership? <Button mode="text" onPress={() => router.push('/signUp')}> Sign Up</Button></BodyText>
+      <View style={{flexDirection: 'row', marginTop: 50}}>
+        <BodyText style={{width: '50%'}}>Do not have a membership? </BodyText>
+        <Button mode="text" style={{width: '20%', marginTop: -7, marginLeft: -40}} onPress={() => router.push('/membership')}> Sign Up</Button>
+      </View>
     </ScrollScreenBack>
   );
 }

@@ -11,9 +11,9 @@ function ScrollScreenBack (props) {
 
   return (
     <View style={{flex: 1, backgroundColor: props.theme.colors.background}}>
-      <AppHeaderBack />
       <SafeAreaProvider>
         <SafeAreaView style={styles.container} edges={['top', 'left', 'right', 'bottom']}>
+        <AppHeaderBack />
           <View style={[{flex:1, padding: 20, backgroundColor: '#f2f2f2'}]}>
             {props.children}
           </View>

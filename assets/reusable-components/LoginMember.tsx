@@ -1,40 +1,46 @@
 import * as React from 'react';
-import { View, StyleSheet, Dimensions, TouchableOpacity, ScrollView } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { Button } from 'react-native-paper';
 import { Formik, Field } from 'formik';
+import { useRouter } from 'expo-router';
+import { useDispatch } from 'react-redux';
+
 import CustomInput from '@/assets/reusable-components/customInput';
-import {SafeAreaView, SafeAreaProvider} from 'react-native-safe-area-context';
+import { setLoginInfo } from '../reducers/loginSlice';
 
 import * as yup from 'yup';
-import { BodyText } from './bodyText';
-import { HeaderText } from './headerText';
 
-const ButtonLabels = ['Student', 'Life', 'Bronze', 'Silver', 'Gold', 'Platinum', 'Diamond'];
-
-const loginValidationSchema = yup.object().shape({
-  email: yup
-    .string()
-    .email("Please enter valid email")
-    .required('Email Address is Required'),
-  password: yup
-    .string()
-    .min(8, ({ min }) => `Password must be at least ${min} characters`)
-    .required('Password is required'),
-})
+// const loginValidationSchema = yup.object().shape({
+//   email: yup
+//     .string()
+//     .email("Please enter valid email")
+//     .required('Email Address is Required'),
+//   password: yup
+//     .string()
+//     .min(8, ({ min }) => `Password must be at least ${min} characters`)
+//     .required('Password is required'),
+// })
 
 function LoginMember () {
+  const router = useRouter();
+  const dispatch = useDispatch()
+
+  const login = () => {
+    console.log('hit')
+    dispatch(setLoginInfo())
+    router.push('/');
+  }
   return (
     <View style={{marginBottom: 10}}>
       <Formik
-          validationSchema={loginValidationSchema}
           initialValues={{
               username: '',
               password: '',
           }}
-          onSubmit={values => console.log(values)}
+          onSubmit={(values) => login()}
       >
       {({
-          handleSubmit, isValid
+          handleSubmit
       }) => (
         <View>
           <Field
@@ -50,8 +56,7 @@ function LoginMember () {
           />
 
           <Button
-            onPress={() =>handleSubmit}
-            disabled={!isValid}
+            onPress={handleSubmit}
           >
           Sign In
           </Button>
@@ -87,37 +92,6 @@ const styles = StyleSheet.create({
       padding: 10,
       borderWidth: 1,
       borderColor: 'grey'
-    },
-    shadowProp: {
-      shadowColor: 'black',
-      shadowOffset: {width: -2, height: 4},
-      shadowOpacity: 0.2,
-      shadowRadius: 3,
-    },
-    separator: {
-      marginVertical: 8,
-      width: '25%'
-    },
-    button: {
-      paddingHorizontal: 8,
-      paddingVertical: 6,
-      borderRadius: 4,
-      backgroundColor: 'oldlace',
-      alignSelf: 'flex-start',
-      marginHorizontal: '1%',
-      marginBottom: 15,
-      minWidth: '48%',
-      textAlign: 'center',
-    },
-    selected: {
-      color: 'white',
-      borderWidth: 0,
-    },
-    buttonLabel: {
-      textAlign: 'center'
-    },
-    selectedLabel: {
-      color: 'white',
     },
   });
 

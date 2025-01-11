@@ -10,14 +10,14 @@ export const BodyText = (props) => {
   const { colors } = useTheme();
   return (
     <View style={[props.style]}>
-        <BText style={[styles.text, styles.roboto, {color: colors.onBackground}]}>{props.children}</BText>
+      <BText style={[styles.roboto, {color: colors.onBackground}]}>{props.children}</BText>
     </View>
 )};
 export const BodyTextReadMore = (props) => {
   const { colors } = useTheme();
   return (
     <View style={[props.style]}>
-        <BText style={[styles.text, styles.roboto, {color: colors.primary, fontWeight: 'bold'}]}>{props.children}</BText>
+        <BText style={[styles.roboto, {color: colors.primary, fontWeight: 'bold'}]}>{props.children}</BText>
     </View>
 )};
 
@@ -53,8 +53,7 @@ export const BodyTextService = (props) => {
   const { colors } = useTheme();
   return (
     <View style={[props.style]}>
-        <BText 
-          style={[styles.text, styles.roboto, {color: colors.onBackground, textAlign: 'center'}]}>{props.children}</BText>
+      <BText style={[styles.roboto, {color: colors.onBackground, textAlign: 'center'}]}>{props.children}</BText>
     </View>
 )};
 
@@ -62,8 +61,7 @@ export const BodyTextCheckbox = (props) => {
   const { colors } = useTheme();
   return (
     <View style={[props.style]}>
-        <BText 
-          style={[styles.text, styles.roboto, {color: colors.onBackground, textAlign: 'left', fontSize: 12}]}>{props.children}</BText>
+      <BText style={[styles.roboto, {color: colors.onBackground, textAlign: 'left', fontSize: 12}]}>{props.children}</BText>
     </View>
 )};
 
@@ -72,17 +70,13 @@ const styles = StyleSheet.create({
     flex:1,
     justifyContent: 'flex-start',
   },
-  text: {
-    marginBottom: 20
-  },
   error: {
     paddingLeft: 15
   },
   roboto: {
-    fontFamily: 'Roboto-Black',
+    fontFamily: 'Roboto-Thin',
     fontSize: 16,
-    lineHeight: 26,
-    marginLeft: 10,
-    marginTop: 10
+    lineHeight: 22,
+    marginLeft: 10
   }
 });

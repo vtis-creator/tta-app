@@ -1,0 +1,621 @@
+{
+    "Orgizational": [
+        {
+            "type":"Advisory Council",
+            "members" : [
+            {
+                "name": "Dr. Malla Reddy Pailla",
+                "position": "Founder",
+                "location": "New York",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Dr. Vijayapal Reddy",
+                "position": "Chair",
+                "location": "New York",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Dr. Mohan Reddy Pailla",
+                "position": "Co-Chair",
+                "location": "New York",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Bharath Reddy Madadi",
+                "position": "",
+                "location": "Georgia",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            }
+            ]
+        },
+        {
+            "type": "President",
+            "members" : [
+            {
+                "name": "Vamshi Reddy",
+                "position": "President",
+                "location": "Washington",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            }
+            ]
+        },
+        {
+            "type": "Founding Members",
+            "members" : [
+            {
+                "name": "Dr. Malla Reddy Pailla",
+                "position": "Founder",
+                "location": "New York",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Haranath Policherla",
+                "position": "Founder",
+                "location": "Michigan",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Dr. Mohan Reddy Patalolla",
+                "position": "Founder",
+                "location": "New Jersey",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Mahender Reddy Musuku",
+                "position": "Founder",
+                "location": "New Jersey",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Srinivas Anugu",
+                "position": "Founder",
+                "location": "Virginia",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Goutham Goli",
+                "position": "Founder",
+                "location": "Georgia",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Vikram Reddy Jangam",
+                "position": "Founder",
+                "location": "Texas",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Anil Arrabelli",
+                "position": "Founder",
+                "location": "California",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Santosh Pathuri",
+                "position": "Founder",
+                "location": "New Jersey",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Ramesh Chandra",
+                "position": "Founder",
+                "location": "New Jersey",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Mahesh Adibhatla",
+                "position": "Founder",
+                "location": "Texas",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Suresh Reddy Sadipiralla",
+                "position": "Founder",
+                "location": "New Jersey",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            }
+            ]
+        },
+        {
+            "type":"Executive Committe", 
+            "members": [
+            {
+                "name": "Vamshi Reddy",
+                "position": "President",
+                "location": "Washington",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Naveen Malipeddi",
+                "position": "President-Elect",
+                "location": "South Carolina",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Dr. Narasimha Reddy Donthireddy",
+                "position": "Executive Vice-President",
+                "location": "Pennsylvania",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Kavitha Reddy",
+                "position": "General Secretary",
+                "location": "Indiana",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Sahodar Peddireddy",
+                "position": "Treasurer",
+                "location": "New York",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Divakar Jandyam",
+                "position": "Executive Director",
+                "location": "Massachusetts",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Shiva Kolla",
+                "position": "Joint Secretary",
+                "location": "New Jersey",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Manohar Rao Bodke",
+                "position": "Joint Secretary",
+                "location": "Washington",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Pradeep Mettu",
+                "position": "National Co-Cordinator",
+                "location": "Washington",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Prasad Kunarapu",
+                "position": "International Vice-President",
+                "location": "Pennsylvania",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            }
+            ]
+        },
+        {
+            "type":"Board of Directors", 
+            "members": [
+            {
+                "name": "Vamshi Reddy",
+                "position": "President",
+                "location": "Washington",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Naveen Malipeddi",
+                "position": "President-Elect",
+                "location": "South Carolina",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Dr. Narasimha Reddy Donthireddy",
+                "position": "Executive Vice-President",
+                "location": "Pennsylvania",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Kavitha Reddy",
+                "position": "General Secretary",
+                "location": "Indiana",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Sahodar Peddireddy",
+                "position": "Treasurer",
+                "location": "New York",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Divakar Jandyam",
+                "position": "Executive Director",
+                "location": "Massachusetts",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Shiva Kolla",
+                "position": "Joint Secretary",
+                "location": "New Jersey",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Manohar Rao Bodke",
+                "position": "Joint Secretary",
+                "location": "Washington",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Pradeep Mettu",
+                "position": "National Co-Cordinator",
+                "location": "Washington",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Prasad Kunarapu",
+                "position": "International Vice-President",
+                "location": "Pennsylvania",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Suresh Reddy Venkannagari",
+                "position": "",
+                "location": "Pennsylvania",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Pavan Ravva",
+                "position": "",
+                "location": "New York",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Venkat Gaddam",
+                "position": "",
+                "location": "Georgia",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Usha Mannem",
+                "position": "",
+                "location": "New York",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Narender Metuku",
+                "position": "",
+                "location": "Florida",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Nishanth Sirikonda",
+                "position": "Media & Communication Director",
+                "location": "North Carolina",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Bhaskar Reddy",
+                "position": "",
+                "location": "Virginia",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Ramana Kotha",
+                "position": "",
+                "location": "Pennsylvania",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Swathi Chennuri",
+                "position": "",
+                "location": "Georgia",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Mallik Arjun Reddy Akkinapally",
+                "position": "",
+                "location": "New York",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Amit Reddy Surakanti",
+                "position": "",
+                "location": "California",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Bhaskar Pinna",
+                "position": "Social Media - Chair",
+                "location": "Delaware",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Karthik Nimmala",
+                "position": "",
+                "location": "Georgia",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Narsimha Peruka",
+                "position": "Community Service Committee - Chair",
+                "location": "New Jersey",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Sangeeta R Borra",
+                "position": "",
+                "location": "Washington",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Ganesh Madhav Veeramaneni",
+                "position": "",
+                "location": "Washington",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Ganesh Madhav Veeramaneni",
+                "position": "",
+                "location": "Washington",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Durga Prasad Seloj",
+                "position": "",
+                "location": "Texas",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Jyothi Reddy Dudipala",
+                "position": "",
+                "location": "Arizona",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Narendar R Yarava",
+                "position": "Website Committee - Chair",
+                "location": "New Jersey",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Sudhakar Uppala",
+                "position": "",
+                "location": "New Jersey",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Srikanth Reddy Gali",
+                "position": "",
+                "location": "North Carolina",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Kiran Guduru",
+                "position": "",
+                "location": "Pennsylvania",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Jyothi Reddy",
+                "position": "",
+                "location": "Texas",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Rama Vanama",
+                "position": "",
+                "location": "New York",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Santosh Gantaram",
+                "position": "",
+                "location": "California",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Mayur Reddy Bandaru",
+                "position": "",
+                "location": "Oregon",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Abhilash Reddy Mudireddy",
+                "position": "",
+                "location": "North Carolina",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Siva Reddy Karumuru",
+                "position": "",
+                "location": "South Carolina",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Satish Pasupulate",
+                "position": "",
+                "location": "California",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            }
+            ]
+        },
+        {
+            "type":"Executive Vice-President",
+            "members" : [
+            {
+                "name": "Dr. Narasimha Reddy Donthireddy",
+                "position": "Executive Vice-President",
+                "location": "Pennsylvania",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            }
+            ]
+        },
+        {
+            "type":"International Vice-President",
+            "members" : [
+            {
+                "name": "Prasad Kunarapu",
+                "position": "International Vice-President",
+                "location": "Pennsylvania",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            }
+            ]
+        },
+        {
+            "type": "Standing Committee",
+            "members" : [
+            {
+                "name": "Narendar R Yarava",
+                "position": "Website Committee - Chair",
+                "location": "New Jersey",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Bhaskar Pinna",
+                "position": "Social Media - Chair",
+                "location": "Delaware",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Arun Arkala",
+                "position": "Membership Committee",
+                "location": "New Jersey",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Narsimha Peruka",
+                "position": "Community Service Committee - Chair",
+                "location": "New Jersey",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Priyanka Krishna",
+                "position": "Cultural Committee - Chair",
+                "location": "New York",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Jyothi Reddy",
+                "position": "Women Forum Committee - Chair",
+                "location": "Texas",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Nidheesh Raju Baskaruni",
+                "position": "Website Committee - Co-Chair",
+                "location": "New Jersey",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Murahari Ponugoti",
+                "position": "Website Committee - Co-Chair",
+                "location": "Pennsylvania",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Venkat Jammula",
+                "position": "Website Committee - Co-Chair",
+                "location": "North Carolina",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Deepthi Miryala",
+                "position": "Women Forum Committee - Co-Chair",
+                "location": "Pennsylvania",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Deepika Reddy Nalla",
+                "position": "Social Media - Co-Chair",
+                "location": "Georgia",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Anuradha Kunta",
+                "position": "Women Forum Committee - Co-Chair",
+                "location": "Washington",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Sreelakshmi Akuleti",
+                "position": "Women Forum Committee - Co-Chair",
+                "location": "Massachusetts",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Jyothsna Palakurthy",
+                "position": "Women Forum Committee - Co-Chair",
+                "location": "Georgia",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Premalatha Gargapati",
+                "position": "Women Forum Committee - Co-Chair",
+                "location": "Texas",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Swetha Nimmala",
+                "position": "Women Forum Committee - Co-Chair",
+                "location": "North Carolina",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Venunath Enugula",
+                "position": "Website Committee - Co-Chair",
+                "location": "Delaware",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Harikanth Madarapu",
+                "position": "Website Committee - Co-Chair",
+                "location": "New Hampshire",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Shiva JaJapuram",
+                "position": "Community Service Committee - Co-Chair",
+                "location": "Delaware",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Varum Allam",
+                "position": "Community Service Committee - Co-Chair",
+                "location": "Massachusetts",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Prashanth Vaida",
+                "position": "Community Service Committee - Member",
+                "location": "Virginia",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Rohini Pogaku",
+                "position": "Community Service Committee - Member",
+                "location": "Massachusetts",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Rohini Pogaku",
+                "position": "Women Forum Committee - Member",
+                "location": "Massachusetts",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Rajesh Kommu",
+                "position": "Website Committee - Member",
+                "location": "Washington",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Santhosh Chetla",
+                "position": "Membership Committee - Member",
+                "location": "Massachusetts",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Pradeep Boddu",
+                "position": "Membership Committee - Member",
+                "location": "California",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            },
+            {
+                "name": "Venugopal Darur",
+                "position": "Membership Committee - Member",
+                "location": "Georgia",
+                "image": "https://mytelanganaus.org/storage/profile/dummy.jpeg"
+            }
+            ]
+        }
+    ]
+    
+}

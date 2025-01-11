@@ -24,7 +24,7 @@ const loginValidationSchema = yup.object().shape({
 
 function SearchMember () {
   return (
-    <View style={{marginBottom: 10}}>
+    <View style={{marginBottom: 10, backgroundColor: 'white'}}>
       <Formik
           validationSchema={loginValidationSchema}
           initialValues={{
@@ -64,7 +64,7 @@ function SearchMember () {
             onPress={() =>handleSubmit}
             disabled={!isValid}
           >
-          Sign In
+          Search
           </Button>
         </View>
       )}

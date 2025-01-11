@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, StyleSheet, Dimensions, Image, ScrollView, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, Dimensions, Image, ScrollView, TouchableOpacity, Linking } from 'react-native';
 import { Button, Card, Icon, Modal, Portal, useTheme } from 'react-native-paper';
 import { useRouter } from "expo-router";
 import Carousel from 'react-native-reanimated-carousel';
@@ -87,26 +87,28 @@ export default function Index() {
         <View style={{position: "relative"}}>
           <HeaderText style={{marginTop: 70}}>About Us</HeaderText>
           <BodyText>Telangana American Telugu Association is the first Telangana organization in North America and a non-profit socio-cultural , charitable organization built to promote, preserve and perpetuate the Telangana community in the US and Canada.Telangana American Telugu Association is the youngest organization in towns across North America.</BodyText>
-          <Button style={{position: 'absolute', bottom: 13, right: 10}} onPress={() => router.push('/aboutUs')} mode="text" textColor={colors.primary} >Read More</Button>
+          <Button onPress={() => router.push('/aboutUs')} mode="text" textColor={colors.primary} >Read More</Button>
         </View>
 
         <HeaderText style={{marginTop: 10}}>Quick Links</HeaderText>
         <View style={{flexDirection: 'row', flexWrap: 'wrap'}}>
           <Button onPress={() => router.push('/donate')} mode="contained" textColor={colors.onPrimary} style={[styles.flexButtons, {borderColor: colors.secondary, marginLeft: 0}]}>Donate</Button>
           <Button onPress={() => router.push('/membership')} mode="contained" textColor={colors.onPrimary} style={[styles.flexButtons, {borderColor: colors.primary}]}>Sign Up</Button>
-          <Button onPress={() => router.push('/contact')} mode="contained" textColor={colors.onPrimary} style={[styles.flexButtons, {borderColor: colors.primary}]}>Contact Us</Button>
+          <Button onPress={() =>  Linking.openURL('mailto:info@telanganaus.org')} mode="contained" textColor={colors.onPrimary} style={[styles.flexButtons, {borderColor: colors.primary}]}>Contact Us</Button>
+          <Button onPress={() => router.push('/orginization')} mode="contained" textColor={colors.onPrimary} style={[styles.flexButtons, {borderColor: colors.primary, marginLeft: 0}]}>Orginization</Button>
+          <Button onPress={() =>  Linking.openURL('tel:+18668827382')} mode="contained" textColor={colors.onPrimary} style={[styles.flexButtons, {borderColor: colors.primary}]}>Call Us</Button>
         </View>
         
         <View style={{position: "relative"}}>
           <HeaderText style={{marginTop: 70}}>President's Message</HeaderText>
           <BodyText>Dear friends, With great privilege and honor, I assume the role of President of the Telangana American Telugu Association for the next two years. My sincere thanks to our Founder Dr.Pailla Malla Reddy garu, Advisory Council Chair Dr.Vijaypal Reddy and Co-Chair Dr.Mohan Reddy Patalolla and Advisory Council Member Bharath Reddy Madadi for the presidential nomination. I take immense pride in having the opportunity to serve the Telugu people and the Telangana community in North America. </BodyText>
-          <Button style={{position: 'absolute', bottom: 13, right: 10}} onPress={() => router.push('/president')} mode="text" textColor={colors.primary}>Read More</Button>
+          <Button onPress={() => router.push('/president')} mode="text" textColor={colors.primary}>Read More</Button>
         </View>
 
         <View>
           <HeaderText style={{marginTop: 70}}>Community Service</HeaderText>
           <BodyText>Telangana American Telugu Association has been in forefront to serve the community in need. TTA Community Services Committee is created under the leadership of TTA Advisory Council, Executive Committee with the main objective to deliver services to the community. TTA has a dedicated team setup for Community Services equipped with enthusiastic volunteers across USA to serve Telugu Community.</BodyText>
-          <Button style={{position: 'absolute', bottom: 13, right: 10}} onPress={() => router.push('/community')} mode="text" textColor={colors.primary}>Read More</Button>
+          <Button onPress={() => router.push('/community')} mode="text" textColor={colors.primary}>Read More</Button>
         </View>
         <View>
           <View>
