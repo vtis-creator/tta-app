@@ -83,15 +83,19 @@ const styles = StyleSheet.create({
   formContainer: {
     marginTop: 5,
   },
-  input: {
-    backgroundColor: '#fff',
-    borderRadius: 8,
-    paddingVertical: 12,
-    paddingHorizontal: 15,
-    marginBottom: 15,
-    borderColor: '#D1D5DB',
-    borderWidth: 1,
-  },
+ input: {
+   backgroundColor: '#f9f9f9',
+   borderRadius: 8,
+   borderWidth: 1,
+   borderColor: '#ddd',
+   padding: 2,
+   paddingVertical: 0.5, // Less height
+   marginVertical: 5,
+   marginBottom: 5,
+   fontSize: 14,
+   color: '#999', // Grey text
+   color: '#333',
+ },
   button: {
     marginTop: 20,
     paddingVertical: 12,

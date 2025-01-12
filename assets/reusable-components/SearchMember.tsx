@@ -93,9 +93,12 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     borderWidth: 1,
     borderColor: '#ddd',
-    padding: 12,
-    marginBottom: 15,
-    fontSize: 16,
+    padding: 2,
+    paddingVertical: 0.5, // Less height
+    marginVertical: 5,
+    marginBottom: 5,
+    fontSize: 14,
+    color: '#999', // Grey text
     color: '#333',
   },
   submitButton: {
