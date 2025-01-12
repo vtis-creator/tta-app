@@ -1,85 +1,125 @@
 import * as React from 'react';
-import { View, StyleSheet, TouchableOpacity, ScrollView, Image } from 'react-native';
+import { View, StyleSheet, TouchableOpacity, ScrollView, Image, Linking } from 'react-native';
 import { Button, Icon, Modal, Portal, Text, useTheme } from 'react-native-paper';
 
 import ScrollScreen from '@/assets/reusable-components/scrollScreen';
 import { HeaderText } from '@/assets/reusable-components/headerText';
-import { BodyText, BodyTextReadMore } from '@/assets/reusable-components/bodyText';
+import { BodyText } from '@/assets/reusable-components/bodyText';
 
 import eventData from '@/assets/data/events.json';
-import { ModalDisplayEvent } from '@/assets/reusable-components/modalDisplay';
-import _ from 'lodash';
 import moment from 'moment';
 import { useSelector } from 'react-redux';
 
-const formatDate = (date) => {
-  return moment(date).format('YYYY-MM-DD HH:MM');
-};
+const formatDate = (date) => moment(date).format('YYYY-MM-DD HH:mm');
 
 const today = formatDate(moment());
-
 const ButtonLabels = ['Upcoming', 'Past', 'All'];
 
 export default function EventScreen() {
   const { colors } = useTheme();
   const [visible, setVisible] = React.useState(false);
-  const [iEvent, setIndexEvent] = React.useState(1000);
+  const [iEvent, setIndexEvent] = React.useState(null);
   const [filter, setFilter] = React.useState('All');
   const [events, setEvents] = React.useState(eventData);
   const city = useSelector((state) => state.city.value);
 
   React.useEffect(() => {
-    if (iEvent !== 1000) {
-      setVisible(true);
-    }
 
-    if (filter === 'Upcoming') {
-      const dateFilter = eventData.filter(
-        (event) => moment(formatDate(event.event.start_date)).isSameOrAfter(moment(today))
-      );
-      setEvents(dateFilter.filter((event) => event.location === city));
-    } else if (filter === 'Past') {
-      const dateFilter = eventData.filter(
-        (event) => moment(formatDate(event.event.start_date)).isSameOrBefore(moment(today))
-      );
-      setEvents(dateFilter.filter((event) => event.location === city));
-    } else {
-      setEvents(eventData.filter((event) => event.location === city));
-    }
-  }, [iEvent, filter, city]);
+    let filteredEvents = [];
+
+    // Filter by date first (Upcoming or Past)
+    const dateFilter = eventData.filter((event) => {
+      const eventDate = moment(formatDate(event.event.start_date));
+      if (filter === 'Upcoming') {
+        return eventDate.isSameOrAfter(moment(today));
+      } else if (filter === 'Past') {
+        return eventDate.isSameOrBefore(moment(today));
+      }
+      return true;
+    });
+
+    // Filter based on location and event type (online/onsite)
+    filteredEvents = dateFilter.filter((event) => {
+      const isLocationMatch = event.location ? event.location === city : true;
+      const isEventTypeMatch = event.event.event_type === 'online' || event.event.event_type === 'onsite';
+
+      return isLocationMatch && (isEventTypeMatch || !event.event.event_type);
+    });
+
+      setEvents(filteredEvents);
+    }, [iEvent, filter, city]);
 
   const hideModal = () => {
-    setIndexEvent(1000);
+    setIndexEvent(null);
     setVisible(false);
+  };
+
+  const openEventLink = (link) => {
+    if (link) {
+      Linking.openURL(link).catch((err) => console.error('Error opening link:', err));
+    }
   };
 
   return (
     <ScrollScreen>
       <Portal>
-        <Modal visible={visible} onDismiss={hideModal} contentContainerStyle={styles.containerStyle}>
+        <Modal visible={visible} onDismiss={hideModal} contentContainerStyle={styles.modalContainer}>
           <TouchableOpacity onPress={hideModal} style={styles.backButton}>
             <Icon source="keyboard-backspace" color={colors.outline} size={50} />
           </TouchableOpacity>
-          <ModalDisplayEvent data={events[iEvent]} />
+          {iEvent !== null && (
+            <ScrollView contentContainerStyle={styles.modalContent}>
+              <Image
+                source={{
+                  uri: events[iEvent].event.image || 'https://via.placeholder.com/150',
+                }}
+                style={styles.modalImage}
+              />
+              <HeaderText style={styles.modalHeader}>{events[iEvent].event.name}</HeaderText>
+
+              <View style={styles.table}>
+                {[
+                  ['Description', events[iEvent].event.description],
+                  ['Start Date', formatDate(events[iEvent].event.start_date)],
+                  ['End Date', formatDate(events[iEvent].event.end_date)],
+                  ['Category', events[iEvent].cat],
+                  ['Contact Email', events[iEvent].event.contact_email],
+                  ['Speakers', events[iEvent].event.speakers],
+                  ['Event Type', events[iEvent].event.event_type.toUpperCase()],
+                  ['Event For', events[iEvent].event.event_for],
+                  ['Chambers', events[iEvent].event.chambers],
+                ].map(([label, value], index) => (
+                  <View key={index} style={styles.tableRow}>
+                    <Text style={styles.tableLabel}>{label}:</Text>
+                    <Text style={styles.tableValue}>{value}</Text>
+                  </View>
+                ))}
+              </View>
+
+              {events[iEvent].event.link && (
+                <TouchableOpacity onPress={() => openEventLink(events[iEvent].event.link)}>
+                  <Text style={styles.linkText}>View More</Text>
+                </TouchableOpacity>
+              )}
+            </ScrollView>
+          )}
         </Modal>
       </Portal>
 
       <HeaderText style={styles.headerText}>Events</HeaderText>
 
       <View style={styles.buttonContainer}>
-        {ButtonLabels.map((value) => {
-          return (
-            <TouchableOpacity
-              key={value}
-              onPress={() => setFilter(value)}
-              style={[styles.button, filter === value && styles.selected]}
-            >
-              <Text style={[filter === value && styles.selectedText, styles.buttonText]}>
-                {value} Events
-              </Text>
-            </TouchableOpacity>
-          );
-        })}
+        {ButtonLabels.map((value) => (
+          <TouchableOpacity
+            key={value}
+            onPress={() => setFilter(value)}
+            style={[styles.button, filter === value && styles.selected]}
+          >
+            <Text style={[filter === value && styles.selectedText, styles.buttonText]}>
+              {value} Events
+            </Text>
+          </TouchableOpacity>
+        ))}
       </View>
 
       <ScrollView
@@ -89,21 +129,36 @@ export default function EventScreen() {
       >
         {Array.isArray(events) &&
           events.map((event, i) => {
+            const eventType = event.event.event_type || 'Online';
+            const isOnline = eventType.toLowerCase() === 'online';
+
             return (
               <View style={styles.eventCard} key={i}>
-                <TouchableOpacity onPress={() => setIndexEvent(i)}>
+                <TouchableOpacity
+                  onPress={() => {
+                    setIndexEvent(i);
+                    setVisible(true);
+                  }}
+                >
                   <View style={styles.cardContent}>
-                    {/* Use event.image to fetch the event image */}
                     <Image
                       source={{
-                        uri: _.get(event, 'event.image', 'https://via.placeholder.com/150'), // Fetch image from event.image or use a placeholder
+                        uri: event.event.image || 'https://via.placeholder.com/150',
                       }}
                       style={styles.eventImage}
                     />
-                    <BodyText style={styles.eventTitle}>{_.get(event, 'event.name', '')}</BodyText>
-                    <BodyTextReadMore style={styles.eventDate}>
-                      {_.get(event, 'event.start_date', '')}
-                    </BodyTextReadMore>
+                    <View
+                      style={[
+                        styles.eventTypeBadge,
+                        isOnline ? styles.onlineBadge : styles.offlineBadge,
+                      ]}
+                    >
+                      <Text style={styles.eventTypeText}>{eventType.toUpperCase()}</Text>
+                    </View>
+                    <BodyText style={styles.eventTitle}>{event.event.name}</BodyText>
+                    <BodyText style={styles.eventDate}>
+                      {formatDate(event.event.start_date)}
+                    </BodyText>
                   </View>
                 </TouchableOpacity>
               </View>
@@ -115,38 +170,73 @@ export default function EventScreen() {
 }
 
 const styles = StyleSheet.create({
-  containerStyle: {
-    padding: 0,
-    margin: 0,
+  modalContainer: {
     backgroundColor: 'white',
+    padding: 20,
+    margin: 20,
+    borderRadius: 10,
   },
   backButton: {
-    marginTop: 40,
-    marginLeft: 30,
+    marginBottom: 20,
+  },
+  modalContent: {
+    alignItems: 'center',
+  },
+  modalImage: {
+    width: '100%',
+    height: 200,
+    borderRadius: 10,
+    marginBottom: 20,
+  },
+  modalHeader: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 20,
+  },
+  table: {
+    width: '100%',
+  },
+  tableRow: {
+    flexDirection: 'row',
+    marginBottom: 10,
+  },
+  tableLabel: {
+    fontWeight: 'bold',
+    marginRight: 10,
+    flex: 1,
+    textAlign: 'right',
+  },
+  tableValue: {
+    flex: 2,
+    textAlign: 'left',
+  },
+  linkText: {
+    color: 'blue',
+    textDecorationLine: 'underline',
+    marginTop: 10,
   },
   headerText: {
-    fontSize: 28,
+    fontSize: 32,
     fontWeight: 'bold',
     marginBottom: 20,
     color: '#333',
+    textAlign: 'center',
   },
   buttonContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    justifyContent: 'space-around',
+    justifyContent: 'space-evenly',
     marginBottom: 20,
+    paddingHorizontal: 10,
   },
   button: {
     paddingVertical: 10,
-    paddingHorizontal: 10,
+    paddingHorizontal: 15,
     borderRadius: 20,
     backgroundColor: 'white',
-    marginBottom: 10,
-    marginHorizontal: 5,
-    minWidth: '30%',
-    alignItems: 'center',
+    margin: 5,
     borderWidth: 1,
-    borderColor: 'rgb(172, 53, 0)'
+    borderColor: 'rgb(172, 53, 0)',
   },
   selected: {
     backgroundColor: 'rgb(172, 53, 0)',
@@ -156,45 +246,57 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     fontSize: 16,
-    textAlign: 'center',
     fontWeight: 'bold',
   },
   eventGrid: {
     flexDirection: 'row',
-    alignItems: 'center',
     paddingHorizontal: 5,
   },
   eventCard: {
-    width: 250, // Fixed width for horizontal scrolling
+    width: 250,
     marginHorizontal: 10,
     borderRadius: 10,
-    overflow: 'hidden',
     backgroundColor: '#fff',
-    elevation: 5,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.15,
     shadowRadius: 4,
   },
   cardContent: {
-    position: 'relative',
-    padding: 10,
+    padding: 12,
   },
   eventImage: {
     width: '100%',
-    height: 150,
+    height: 160,
+    borderRadius: 10,
+    marginBottom: 12,
+  },
+  eventTypeBadge: {
+    position: 'absolute',
+    top: 10,
+    left: 10,
+    paddingVertical: 4,
+    paddingHorizontal: 8,
     borderRadius: 8,
-    marginBottom: 10,
-    resizeMode: 'cover',
+  },
+  onlineBadge: {
+    backgroundColor: '#4caf50',
+  },
+  offlineBadge: {
+    backgroundColor: '#f44336',
+  },
+  eventTypeText: {
+    color: '#fff',
+    fontSize: 12,
+    fontWeight: 'bold',
   },
   eventTitle: {
-    fontSize: 16,
+    fontSize: 18,
     fontWeight: 'bold',
-    color: '#333',
-    marginBottom: 5,
+    marginBottom: 6,
   },
   eventDate: {
-    fontSize: 12,
-    color: '#555',
+    fontSize: 14,
+    color: '#777',
   },
 });
