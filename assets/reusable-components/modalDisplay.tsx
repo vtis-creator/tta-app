@@ -10,7 +10,7 @@ export const ModalDisplayEvent = (props) => {
     <View style={styles.modalContainer}>
         <ScrollView>
           <HeaderTextModal style={{marginBottom: 20, marginTop: 25, fontSize: 30, fontWeight: 600}}>{_.get(inData, 'event.name', '')}</HeaderTextModal>
-          <Image source={require('@/assets/images/events/cricket.jpg')} style={{ margin: 5, width:250, height: 250, marginLeft: '21%', overflow: 'hidden'}}/>
+          <Image source={{uri: _.get(inData, 'event.image', '')}} style={{ margin: 5, width:250, height: 250, marginLeft: '21%', overflow: 'hidden'}}/>
           <BodyText style={{marginVertical: 10}}>{_.get(inData, 'location', '')}</BodyText>
           <BodyTextReadMore style={{marginVertical: 10}}>{_.get(inData, 'event.start_date', '')}</BodyTextReadMore>
           <BodyText style={{marginVertical: 10}}>{_.get(inData, 'event.description', '')}</BodyText>

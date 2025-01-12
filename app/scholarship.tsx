@@ -12,17 +12,16 @@ export default function scholarship () {
   return (
     <ScrollScreenBack>
           <HeaderTextUnderline>Scholarship</HeaderTextUnderline>
-          <ScrollView>
-            <View>
+          <View>
               <Image
                 source={{uri: 'https://mytelanganaus.org/img/top_offers/scholarship.png'}}
                 style={{width: 150, height: 150, marginLeft: '30%', marginTop: 10}}/>
             </View>
-            <BodyText style={{marginTop: 10, marginLeft: 15}}>We see many deserving students who are intelligent but not able to continue their higher studies because of their financial background. We will identify those students from each area and provide scholarships to continue their education. We are giving scholarships to these students to make them intelligent and productive citizens of the country. Each scholarship would be approx. $250 per student per year. A recipient of this scholarship will be assigned to a donor for monitoring their progress by the donor.</BodyText>
-
-            <Button onPress={() => router.push('/donate')} mode="contained" textColor={colors.onPrimary} style={{marginTop: 20}}>Donate</Button>
-
+          <ScrollView>
+            
+            <BodyText style={{marginTop: 20}}>We see many deserving students who are intelligent but not able to continue their higher studies because of their financial background. We will identify those students from each area and provide scholarships to continue their education. We are giving scholarships to these students to make them intelligent and productive citizens of the country. Each scholarship would be approx. $250 per student per year. A recipient of this scholarship will be assigned to a donor for monitoring their progress by the donor.</BodyText>
           </ScrollView>
+          <Button onPress={() => router.push('/donate')} mode="contained" textColor={colors.onPrimary} style={{marginTop: 20}}>Donate</Button>
         </ScrollScreenBack>
   );
 }

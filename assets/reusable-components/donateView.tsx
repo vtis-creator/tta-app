@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, StyleSheet, Linking } from 'react-native';
+import { View, StyleSheet, Linking, ScrollView } from 'react-native';
 import { Button, Checkbox } from 'react-native-paper';
 import { Formik, Field } from 'formik';
 import CustomInput from '@/assets/reusable-components/customInput';
@@ -38,89 +38,91 @@ function DonateView() {
 
   return (
     <View style={styles.container}>
-      <Formik
-        validationSchema={loginValidationSchema}
-        initialValues={{
-          fName: '',
-          lName: '',
-          email: '',
-          phone: '',
-          amount: '',
-          description: '',
-        }}
-        onSubmit={(values) => console.log(values)}
-      >
-        {({ handleSubmit, isValid }) => (
-          <View style={styles.formContainer}>
-            <Field
-              component={CustomInput}
-              name="fName"
-              label="First Name"
-              mode="outlined"
-              style={styles.input}
-            />
-            <Field
-              component={CustomInput}
-              name="lName"
-              label="Last Name"
-              mode="outlined"
-              style={styles.input}
-            />
-            <Field
-              component={CustomInput}
-              name="email"
-              label="Email"
-              mode="outlined"
-              style={styles.input}
-            />
-            <Field
-              component={CustomInput}
-              name="phone"
-              label="Phone Number"
-              placeholder="1234567890"
-              mode="outlined"
-              style={styles.input}
-            />
-            <Field
-              component={CustomInput}
-              name="amount"
-              label="Amount"
-              placeholder="50"
-              mode="outlined"
-              style={styles.input}
-              keyboardType="numeric"
-            />
-            <Field
-              component={CustomInput}
-              name="description"
-              label="Description"
-              multiline={true}
-              numberOfLines={4}
-              mode="outlined"
-              style={styles.input}
-            />
-
-            <View style={styles.checkboxContainer}>
-              <Checkbox
-                status={checked ? 'checked' : 'unchecked'}
-                onPress={() => setChecked(!checked)}
+      <ScrollView>
+        <Formik
+          validationSchema={loginValidationSchema}
+          initialValues={{
+            fName: '',
+            lName: '',
+            email: '',
+            phone: '',
+            amount: '',
+            description: '',
+          }}
+          onSubmit={(values) => console.log(values)}
+        >
+          {({ handleSubmit, isValid }) => (
+            <View style={styles.formContainer}>
+              <Field
+                component={CustomInput}
+                name="fName"
+                label="First Name"
+                mode="outlined"
+                style={styles.input}
               />
-              <BodyTextCheckbox style={styles.checkboxText}>
-                Telangana American Telugu Association Section 501(c)(3) Non-Profit organization. All donations are deemed tax-deductible absent any limitations on deductible applicable to a particular taxpayer.
-              </BodyTextCheckbox>
-            </View>
+              <Field
+                component={CustomInput}
+                name="lName"
+                label="Last Name"
+                mode="outlined"
+                style={styles.input}
+              />
+              <Field
+                component={CustomInput}
+                name="email"
+                label="Email"
+                mode="outlined"
+                style={styles.input}
+              />
+              <Field
+                component={CustomInput}
+                name="phone"
+                label="Phone Number"
+                placeholder="1234567890"
+                mode="outlined"
+                style={styles.input}
+              />
+              <Field
+                component={CustomInput}
+                name="amount"
+                label="Amount"
+                placeholder="50"
+                mode="outlined"
+                style={styles.input}
+                keyboardType="numeric"
+              />
+              <Field
+                component={CustomInput}
+                name="description"
+                label="Description"
+                multiline={true}
+                numberOfLines={4}
+                mode="outlined"
+                style={styles.input}
+              />
 
-            <Button
-              onPress={handlePayPalRedirect} // Dummy PayPal button integration
-              mode="contained"
-              style={styles.donateButton}
-              disabled={!isValid} // Button is disabled if the form is invalid
-            >
-              Donate
-            </Button>
-          </View>
-        )}
-      </Formik>
+              <View style={styles.checkboxContainer}>
+                <Checkbox
+                  status={checked ? 'checked' : 'unchecked'}
+                  onPress={() => setChecked(!checked)}
+                />
+                <BodyTextCheckbox style={styles.checkboxText}>
+                  Telangana American Telugu Association Section 501(c)(3) Non-Profit organization. All donations are deemed tax-deductible absent any limitations on deductible applicable to a particular taxpayer.
+                </BodyTextCheckbox>
+              </View>
+
+              <Button
+                onPress={handlePayPalRedirect} // Dummy PayPal button integration
+                mode="contained"
+                style={styles.donateButton}
+                disabled={!isValid} // Button is disabled if the form is invalid
+              >
+                Donate
+              </Button>
+            </View>
+          )}
+        </Formik>
+      </ScrollView>
     </View>
   );
 }
