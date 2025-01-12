@@ -12,12 +12,12 @@ const Banner = ({ title, subtitle, imageUri, buttonLabel, onPress,_color }) => {
       {/* Background Banner Image */}
       <Image
         source={imageUri}
-        style={[styles.bannerImage]}
+        style={[styles.bannerImage , { opacity: 0.8 }]}
         resizeMode="cover"
       />
       {/* Text Content */}
       <View style={styles.textContainer}>
-        <Text style={[styles.bannerTitle, { color: "black"}]}>
+        <Text style={[styles.bannerTitle, { color: "white"}]}>
           {title}
         </Text>
 
