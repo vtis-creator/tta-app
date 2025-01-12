@@ -1,57 +1,77 @@
-import * as React from 'react';
-import { StyleSheet, Dimensions, ScrollView } from 'react-native';
+import React from 'react';
+import { StyleSheet, Dimensions, ScrollView, View } from 'react-native';
 import { HeaderTextUnderline } from '@/assets/reusable-components/headerText';
 import ScrollScreenBack from '@/assets/reusable-components/scrollScreenBack';
 import { BodyText, BodyTextReadMore } from '@/assets/reusable-components/bodyText';
 
-const width = Dimensions.get('window').width;
+const { width } = Dimensions.get('window');
 
-export default function communityMessage() {
+export default function CommunityMessage() {
   return (
     <ScrollScreenBack>
-          <HeaderTextUnderline>Community Services</HeaderTextUnderline>
-          <ScrollView>
-            <BodyText style={{marginTop: 10, marginLeft: 15}}>Telangana American Telugu Association has been in forefront to serve the community in need. TTA Community Services Committee is created under the leadership of TTA Advisory Council, Executive Committee with the main objective to deliver services to the community. TTA has a dedicated team setup for Community Services equipped with enthusiastic volunteers across USA to serve Telugu Community.</BodyText>
-    
-            <BodyText style={{marginLeft: 15}}>Community Services works within core principles of the organization and aim to provide assistance to Telugu Community in the areas of Emergency Services, Immigration Services, Legal, Consular Services by facilitating the reach with respective authorities</BodyText>
-    
-            <BodyText style={{marginLeft: 15}}>Helpline is reachable 24/7 during Emergency situations such as accidents, sudden deaths and TTA will offer assistance in consultation with local authorities, consular offices strictly adhering to local law and jurisdictions and within our limits as a non-profit organization.</BodyText>
-    
-            <BodyText style={{marginLeft: 15}}>key Areas of Assistance provided by Community Services</BodyText>
-    
-            <BodyTextReadMore style={{marginLeft: 15}}>Emergency Helpline:</BodyTextReadMore>
-            <BodyText style={{marginTop: -30, marginLeft: 15}}>24/7 helpline number to reach for assistance</BodyText>
+      <HeaderTextUnderline>Community Services</HeaderTextUnderline>
+      <ScrollView contentContainerStyle={styles.scrollContent}>
+        <BodyText style={styles.paragraph}>
+          Telangana American Telugu Association has been in the forefront to serve the community in need. TTA Community Services Committee is created under the leadership of TTA Advisory Council and Executive Committee with the main objective of delivering services to the community. TTA has a dedicated team of enthusiastic volunteers across the USA to serve the Telugu Community.
+        </BodyText>
 
-            <BodyTextReadMore style={{marginLeft: 15}}>Community Services:</BodyTextReadMore>
-            <BodyText style={{marginTop: -30, marginLeft: 15}}>Helping Telugu community within USA and in India during Emergency situation, Natural Disasters/Pandemic</BodyText>
-    
-            <BodyTextReadMore style={{marginLeft: 15}}>Immigration & Visa, Legal Assistance Services:</BodyTextReadMore>
-            <BodyText style={{marginTop: -30, marginLeft: 15}}>Provide FREE initial consultation for any community member with TTA panel of Attorneys for Legal, Immigration, Emergency assistance</BodyText>
+        <BodyText style={styles.paragraph}>
+          Community Services work within the core principles of the organization and aim to provide assistance to the Telugu Community in areas such as Emergency Services, Immigration Services, Legal, and Consular Services by facilitating connections with the respective authorities.
+        </BodyText>
 
-            <BodyTextReadMore style={{marginLeft: 15}}>TTA Immigration Help:</BodyTextReadMore>
-            <BodyText style={{marginTop: -30, marginLeft: 15}}>Telangana American Telugu Association(TTA) partnered with Somireddy Law Group(SLG) to provide Immigration and Legal advice to TTA member community.</BodyText>
+        <BodyText style={styles.paragraph}>
+          The helpline is reachable 24/7 during emergencies such as accidents or sudden deaths. TTA offers assistance in consultation with local authorities and consular offices, strictly adhering to local laws and jurisdictions while operating within the limits of a non-profit organization.
+        </BodyText>
 
-            <BodyTextReadMore style={{marginLeft: 15}}>Students Assistance:</BodyTextReadMore>
-            <BodyText style={{marginTop: -30, marginLeft: 15}}>Help Telugu students studying in various universities in USA for any Emergency Situation, Career guidance, Trainings</BodyText>
+        <BodyText style={styles.sectionHeader}>Key Areas of Assistance:</BodyText>
+        {renderSection('Emergency Helpline', '24/7 helpline number to reach for assistance.')}
+        {renderSection('Community Services', 'Helping the Telugu community within the USA and in India during emergencies, natural disasters, and pandemics.')}
+        {renderSection('Immigration & Visa, Legal Assistance Services', 'Providing FREE initial consultation for any community member with TTA panel attorneys for legal, immigration, and emergency assistance.')}
+        {renderSection('TTA Immigration Help', 'TTA has partnered with Somireddy Law Group (SLG) to provide immigration and legal advice to TTA member communities.')}
+        {renderSection('Students Assistance', 'Helping Telugu students studying in various universities in the USA with emergency situations, career guidance, and training programs.')}
+        {renderSection('Indian Consular Services', 'Coordinating help with Indian Embassies in the USA for emergencies. Organizing webinars with Consul General offices to bring awareness of policy changes.')}
+      </ScrollView>
+    </ScrollScreenBack>
+  );
+}
 
-            <BodyTextReadMore style={{marginLeft: 15}}>Indian Consular Services:</BodyTextReadMore>
-            <BodyText style={{marginTop: -30, marginLeft: 15}}>Coordinate help with Indian Embassies in USA for any Emergency help for the community. Setup Webinars with Consul General offices for Community members to bring awareness of any policy changes</BodyText>
-          </ScrollView>
-        </ScrollScreenBack>
+function renderSection(title, description) {
+  return (
+    <View style={styles.sectionContainer}>
+      <BodyTextReadMore style={styles.sectionTitle}>{title}:</BodyTextReadMore>
+      <BodyText style={styles.sectionDescription}>{description}</BodyText>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
+  scrollContent: {
+    padding: 15,
   },
-  text: {
-    color: '#fff',
+  paragraph: {
+    marginBottom: 15,
+    fontSize: 16,
+    lineHeight: 22,
+    color: '#333',
   },
-  image: {
-    width: '100%',
-    height: '100%',
-    resizeMode: 'repeat',
+  sectionHeader: {
+    marginTop: 10,
+    marginBottom: 10,
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#444',
   },
-
+  sectionContainer: {
+    marginBottom: 20,
+  },
+  sectionTitle: {
+    fontSize: 16,
+    fontWeight: '600',
+    marginBottom: 5,
+  },
+  sectionDescription: {
+    fontSize: 14,
+    lineHeight: 20,
+    color: '#555',
+  },
 });
