@@ -44,23 +44,7 @@ export default function Index() {
   return (
     <ScrollScreen>
       <ScrollView>
-        <View style={{backgroundColor: colors.background, position: 'relative'}}>
-          <Portal>
-            <Modal visible={visible} onDismiss={hideModal} contentContainerStyle={styles.containerStyle}>
-              <ModalDisplayEvent data={events[iEvent]} />
-              <TouchableOpacity
-                onPress={() => hideModal()}
-                style={styles.modalCloseButton}
-              >
-                <Icon
-                  source="keyboard-backspace"
-                  color={colors.outline}
-                  size={30}
-                />
-              </TouchableOpacity>
-            </Modal>
-          </Portal>
-
+        <View style={{backgroundColor: 'white', position: 'relative'}}>
           <Carousel
             loop
             width={width - 30}
@@ -191,12 +175,11 @@ const styles = StyleSheet.create({
     marginTop: 20,
     width: 700,  // Reverted to original width
     height: 400, // Reverted to original height
-    backgroundColor: '#f2f2f2',
   },
   footerContainer: {
     paddingVertical: 30,
     paddingHorizontal: 20,
-    backgroundColor: '#f8f8f8',
+    backgroundColor: '#fff',
     alignItems: 'center',
     borderTopWidth: 1,
     borderTopColor: '#ddd',

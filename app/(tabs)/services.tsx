@@ -6,7 +6,7 @@ import ScrollScreen from '@/assets/reusable-components/scrollScreen';
 import _ from 'lodash';
 
 import servicesData from '@/assets/data/services.json';
-import { BodyText, BodyTextService } from '@/assets/reusable-components/bodyText';
+import { BodyTextService } from '@/assets/reusable-components/bodyText';
 import { router } from 'expo-router';
 
 const width = Dimensions.get('window').width;
@@ -73,6 +73,13 @@ const styles = StyleSheet.create({
     width: '30%',
     height: 150,
     backgroundColor: 'white',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.1,
+    shadowRadius: 5,
+    elevation: 3,
+    borderWidth: .2,
+    borderColor: 'black'
   },
 });

@@ -20,7 +20,7 @@ function AppHeader (props) {
   const router = useRouter();
 
   return (
-    <View style={{height: 75, backgroundColor: props.theme.colors.background, position: 'relative'}}>
+    <View style={styles.container}>
       <TouchableOpacity style={{marginLeft: 20, marginTop: 18}} onPress={() => router.back()}>
         <Icon
             source="arrow-left"
@@ -34,10 +34,14 @@ function AppHeader (props) {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    width: width,
-    height: height,
-    elevation: 0
+    position: 'relative',
+    height: 75,
+    backgroundColor: 'white',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.1,
+    shadowRadius: 5,
+    elevation: 3
   }
 });
 

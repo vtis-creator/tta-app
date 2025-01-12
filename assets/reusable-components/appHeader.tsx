@@ -28,7 +28,7 @@ function AppHeader (props) {
   // use global value to autoset the dropdown acrross the pages
 
   return (
-    <View style={[{backgroundColor: colors.background, position: 'relative', height: 75}]}>
+    <View style={[styles.container, {position: 'relative', height: 75}]}>
         <TouchableOpacity onPress={() => router.push('/')}>
           <Image source={require('@/assets/images/logo.png')} style={[props.show || props.show === undefined ? styles.showImage : styles.hideImage, {marginTop: 5, marginLeft: 15}]}/>
         </TouchableOpacity>
@@ -77,10 +77,12 @@ const styles = StyleSheet.create({
     height: 65
   },
   container: {
-    flex: 1,
-    width: width,
-    height: height,
-    elevation: 0
+    backgroundColor: 'white',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.1,
+    shadowRadius: 5,
+    elevation: 3,
   }
 });
 

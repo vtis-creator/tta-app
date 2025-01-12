@@ -12,7 +12,7 @@ export default function Membership() {
   return (
     <ScrollScreen>
       <TabsProvider defaultIndex={0}>
-          <Tabs>
+          <Tabs style={{ backgroundColor:'#fff' }}>
           <TabScreen label="Sign Up">
             <SignUpMember />
           </TabScreen>

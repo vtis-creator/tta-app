@@ -47,9 +47,6 @@ function LoginMember() {
               placeholder="Username"
               style={styles.input}
             />
-            {errors.username && touched.username && (
-              <Text style={styles.errorText}>{errors.username}</Text>
-            )}
 
             {/* Password Field */}
             <Field
@@ -59,16 +56,13 @@ function LoginMember() {
               secureTextEntry
               style={styles.input}
             />
-            {errors.password && touched.password && (
-              <Text style={styles.errorText}>{errors.password}</Text>
-            )}
 
             {/* Sign In Button */}
             <Button
               mode="contained"
               onPress={handleSubmit}
               disabled={!isValid}
-              style={styles.button}
+              style={[styles.button, !isValid && styles.buttonDisabled]}
             >
               Sign In
             </Button>
@@ -108,6 +102,9 @@ const styles = StyleSheet.create({
     fontSize: 12,
     marginBottom: 5,
   },
+  buttonDisabled: {
+    backgroundColor: '#c0c0c0'
+  }
 });
 
 export default LoginMember;

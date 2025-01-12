@@ -38,7 +38,7 @@ export default function organization() {
                     return (
                       <View
                         key={member.name.concat(generateUUID(i + random(0, 100)))}
-                        style={{width: 175, backgroundColor: 'white', borderRadius: 15, padding: 10, marginHorizontal: 10, marginVertical: 15}}>
+                        style={styles.orgContainer}>
                         <Image
                           source={{uri: member.image}}
                           style={{width: 75, height: 75, marginLeft: '25%', marginTop: 10}}/>
@@ -72,5 +72,18 @@ const styles = StyleSheet.create({
     height: '100%',
     resizeMode: 'repeat',
   },
+  orgContainer: {
+    elevation: 5,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.15,
+    shadowRadius: 4,
+    width: 175,
+    backgroundColor: 'white',
+    borderRadius: 15,
+    padding: 10,
+    marginHorizontal: 10,
+    marginVertical: 15
+  }
 
 });

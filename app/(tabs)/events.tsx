@@ -138,13 +138,15 @@ const styles = StyleSheet.create({
   },
   button: {
     paddingVertical: 10,
-    paddingHorizontal: 20,
+    paddingHorizontal: 10,
     borderRadius: 20,
     backgroundColor: 'white',
     marginBottom: 10,
     marginHorizontal: 5,
     minWidth: '30%',
     alignItems: 'center',
+    borderWidth: 1,
+    borderColor: 'rgb(172, 53, 0)'
   },
   selected: {
     backgroundColor: 'rgb(172, 53, 0)',
@@ -165,7 +167,6 @@ const styles = StyleSheet.create({
   eventCard: {
     width: 250, // Fixed width for horizontal scrolling
     marginHorizontal: 10,
-    marginBottom: 15,
     borderRadius: 10,
     overflow: 'hidden',
     backgroundColor: '#fff',
