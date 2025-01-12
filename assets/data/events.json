@@ -2,7 +2,6 @@
     {
         "image": "https://mytelanganaus.org/storage/app/events/applied_ai/ml_tta-_it_group_08242024_1724532218_thumb.png",
         "cat": "TTA- IT Group",
-        "location": "Dallas",
         "event": {
             "name": "Applied AI/ML",
             "image": "https://mytelanganaus.org/storage/app/events/applied_ai/ml_tta-_it_group_08242024_1724532218.jpg",
@@ -20,7 +19,6 @@
     {
         "image": "https://mytelanganaus.org/storage/app/events/tta_tampa_holi_celebrations_events_-2024_03042024_1709523288_thumb.png",
         "cat": "TTA- IT Group",
-        "location": "Atlanta",
         "event": {
             "name": "Preparing For FY-2025 H1B Lottery",
             "image": "https://mytelanganaus.org/storage/app/events/tta_tampa_holi_celebrations_events_-2024_03042024_1709523288.png",
@@ -38,7 +36,6 @@
     {
         "image": "https://mytelanganaus.org/storage/app/events/preparing_for_fy-2025_h1b_lottery_events_-2024_02202024_1708393660_thumb.png",
         "cat": "Events -2024",
-        "location": "Charlotte",
         "event": {
             "name": "Preparing For FY-2025 H1B Lottery",
             "image": "https://mytelanganaus.org/storage/app/events/preparing_for_fy-2025_h1b_lottery_events_-2024_02202024_1708393660.jpg",
@@ -56,7 +53,6 @@
     {
         "image": "https://mytelanganaus.org/storage/app/events/financial_markets_outlook_2024_events_-2024_02202024_1708392290_thumb.png",
         "cat": "Events -2024",
-        "location": "Dallas",
         "event": {
             "name": "Financial Markets Outlook 2024",
             "image": "https://mytelanganaus.org/storage/app/events/financial_markets_outlook_2024_events_-2024_02202024_1708392290.jpg",
@@ -99,7 +95,7 @@
             "description": "Bathukamma is a flower-festival celebrated by the women of Telangana for nine days starting on Pitru / Mahalaya Amavasya and the 9-day festivities will culminate on Saddula Bathukamma or Pedda Bathukamma.&lsquo;Bathukamma' means &lsquo;Mother Goddess come Alive&rsquo;. Bathukamma is a beautiful flower stack, arranged with different unique seasonal flowers, most of them with medicinal values, in seven concentric layers in the shape of temple gopuram. It is usually brothers, who bring flowers to their mother and sisters to arrange bathukamma.Let's come together as TTA Family and Friends to celebrate and enrich Telangana Culture!!",
             "end_date": "2024-10-22 21:00",
             "contact_email": "webcommittee@telanganaus.org",
-            "chapteres": "Local",
+            "chapters": "Local",
             "event_for": "TTA Nationwide Bathukamma 2023",
             "speakers": "All",
             "start_date": "2024-10-15 11:00",

@@ -79,15 +79,13 @@ export default function EventScreen() {
 
               <View style={styles.table}>
                 {[
-                  ['Description', events[iEvent].event.description],
                   ['Start Date', formatDate(events[iEvent].event.start_date)],
                   ['End Date', formatDate(events[iEvent].event.end_date)],
-                  ['Category', events[iEvent].cat],
+                  ['Description', events[iEvent].event.description],
+                  ['Location', events[iEvent].event.location],
                   ['Contact Email', events[iEvent].event.contact_email],
                   ['Speakers', events[iEvent].event.speakers],
                   ['Event Type', events[iEvent].event.event_type.toUpperCase()],
-                  ['Event For', events[iEvent].event.event_for],
-                  ['Chambers', events[iEvent].event.chambers],
                 ].map(([label, value], index) => (
                   <View key={index} style={styles.tableRow}>
                     <Text style={styles.tableLabel}>{label}:</Text>
