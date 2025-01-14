@@ -23,8 +23,11 @@ function LoginMember() {
   const router = useRouter();
   const dispatch = useDispatch();
 
-  const login = () => {
-    dispatch(setLoginInfo());
+  const login = (values) => {
+    const { username } = values;
+    if(username.toLowerCase() === 'test@login.com'){
+      dispatch(setLoginInfo());
+    }
     router.push('/');
   };
 
@@ -36,7 +39,7 @@ function LoginMember() {
           password: '',
         }}
         validationSchema={loginValidationSchema}
-        onSubmit={login}
+        onSubmit={(values) => login(values)}
       >
         {({ handleSubmit, errors, touched, isValid }) => (
           <View style={styles.formContainer}>
